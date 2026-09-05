@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Share Your Story — Hindu University of America</title>
+<meta name="description" content="Record a short video testimonial for Hindu University of America. Guided teleprompter, practice mode, and an automatic camera, lighting and background check.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --hua-cream:#FBF5E9; --hua-cream-2:#F4E8D3; --hua-ink:#241C17; --hua-ink-2:#6E5D4F; --hua-ink-3:#9C8B79;
+  --hua-orange:#E4571E; --hua-gold:#F2A81D; --hua-red:#BE2E17; --hua-sage:#5F7C4C;
+  --hua-line:#E7D8BE; --hua-line-2:#F0E5D2; --hua-surface:#FFFFFF;
+  --stage:#191310; --stage-2:#241C17;
+  --r-lg:20px; --r-md:14px; --r-sm:10px;
+  --sh-sm:0 1px 2px rgba(36,28,23,.05);
+  --sh-md:0 1px 2px rgba(36,28,23,.04), 0 18px 40px -28px rgba(36,28,23,.22);
+  --sh-lg:0 1px 2px rgba(36,28,23,.05), 0 28px 60px -30px rgba(36,28,23,.30);
+  --rail:404px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--hua-ink);
+  font-family:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(1100px 520px at 82% -10%, rgba(242,168,29,.20), transparent 60%),
+    radial-gradient(880px 460px at 4% 0%, rgba(228,87,30,.10), transparent 62%),
+    var(--hua-cream);
+  min-height:100vh;
+}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:rgba(228,87,30,.18)}
+:focus-visible{outline:2px solid var(--hua-orange); outline-offset:2px; border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- primitives ---------- */
+.eyebrow{font-size:10.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--hua-ink-3)}
+.card{background:var(--hua-surface);border:1px solid var(--hua-line);border-radius:var(--r-lg);box-shadow:var(--sh-md)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border-radius:999px;border:1px solid var(--hua-line);background:var(--hua-surface);
+  color:var(--hua-ink);font-size:13.5px;font-weight:700;padding:10px 18px;cursor:pointer;
+  transition:background .15s,border-color .15s,color .15s,transform .1s,box-shadow .15s;
+  white-space:nowrap;
+}
+.btn:hover:not(:disabled){background:var(--hua-cream);border-color:var(--hua-ink-3)}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.btn:disabled{opacity:.42;cursor:not-allowed}
+.btn-primary{background:var(--hua-orange);border-color:var(--hua-orange);color:#fff;box-shadow:0 10px 22px -14px rgba(228,87,30,.9)}
+.btn-primary:hover:not(:disabled){background:var(--hua-red);border-color:var(--hua-red)}
+.btn-rec{background:var(--hua-red);border-color:var(--hua-red);color:#fff}
+.btn-rec:hover:not(:disabled){background:#a52512;border-color:#a52512}
+.btn-ghost{background:transparent;border-color:transparent;color:var(--hua-ink-2)}
+.btn-ghost:hover:not(:disabled){background:rgba(36,28,23,.06);border-color:transparent}
+.btn-sm{padding:7px 13px;font-size:12.5px}
+.btn-dark{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22);color:#fff}
+.btn-dark:hover:not(:disabled){background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.34)}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 11px;font-size:11px;font-weight:800;letter-spacing:.05em}
+.dot{width:7px;height:7px;border-radius:50%;flex:none}
+
+/* ---------- header ---------- */
+header.site{
+  position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);
+  background:rgba(251,245,233,.90);border-bottom:1px solid var(--hua-line);
+}
+.hrow{max-width:1580px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;gap:16px}
+.seal{width:46px;height:46px;flex:none}
+.hname{display:flex;flex-direction:column;gap:1px;min-width:0}
+.hname .k{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--hua-orange)}
+.hname .t{font-size:18px;font-weight:800;letter-spacing:-.02em}
+.hspace{flex:1}
+.hmeta{display:flex;align-items:center;gap:14px}
+.hstat{display:flex;flex-direction:column;align-items:flex-end;gap:1px;padding-right:14px;border-right:1px solid var(--hua-line)}
+.hstat:last-child{border-right:0;padding-right:0}
+.hstat .v{font-size:14px;font-weight:800;color:var(--hua-ink)}
+.hstat .v.accent{color:var(--hua-orange)}
+
+/* ---------- stepper ---------- */
+.steps{max-width:1580px;margin:0 auto;padding:0 28px 11px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.step{
+  display:inline-flex;align-items:center;gap:9px;padding:6px 14px 6px 7px;border-radius:999px;
+  border:1px solid transparent;font-size:12.5px;font-weight:700;color:var(--hua-ink-3);
+  background:transparent;cursor:pointer;transition:all .15s;
+}
+.step:hover:not(:disabled){background:rgba(228,87,30,.08)}
+.step:disabled{cursor:not-allowed;opacity:.55}
+.step .n{
+  width:22px;height:22px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:var(--hua-cream-2);color:var(--hua-ink-3);font-size:11px;font-weight:800;
+  border:1px solid var(--hua-line);
+}
+.step[data-state="active"]{background:rgba(228,87,30,.10);border-color:rgba(228,87,30,.24);color:var(--hua-orange)}
+.step[data-state="active"] .n{background:var(--hua-orange);border-color:var(--hua-orange);color:#fff}
+.step[data-state="done"]{color:var(--hua-sage)}
+.step[data-state="done"] .n{background:var(--hua-sage);border-color:var(--hua-sage);color:#fff}
+.step-sep{width:16px;height:1px;background:var(--hua-line);flex:none}
+
+/* ---------- layout ---------- */
+main{max-width:1580px;margin:0 auto;padding:22px 28px 64px;display:grid;grid-template-columns:minmax(0,1fr) var(--rail);gap:22px;align-items:start}
+.rail{position:sticky;top:132px;display:flex;flex-direction:column;gap:16px;max-height:calc(100vh - 154px)}
+@media (max-width:1180px){
+  main{grid-template-columns:minmax(0,1fr)}
+  .rail{position:static;max-height:none}
+}
+
+/* ---------- stage ---------- */
+.stage-wrap{display:flex;flex-direction:column;gap:16px;min-width:0}
+.stage{
+  position:relative;border-radius:var(--r-lg);overflow:hidden;background:var(--stage);
+  border:1px solid rgba(36,28,23,.18);box-shadow:var(--sh-lg);aspect-ratio:16/9;
+}
+.stage video{width:100%;height:100%;object-fit:cover;display:block;background:var(--stage)}
+.stage video.mirror{transform:scaleX(-1)}
+.stage.is-off video{opacity:0}
+.stage.rolling .guide-box,.stage.rolling .guide-line,.stage.rolling .guide-lbl{opacity:.35;transition:opacity .4s}
+
+/* placeholder when no camera */
+.stage-empty{
+  position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:32px;
+  background:
+    radial-gradient(560px 300px at 50% 30%, rgba(242,168,29,.14), transparent 70%),
+    var(--stage);
+  color:#fff;
+}
+.stage-empty h3{margin:14px 0 6px;font-size:19px;font-weight:800;letter-spacing:-.01em}
+.stage-empty p{margin:0 auto;max-width:46ch;font-size:13px;line-height:1.6;color:rgba(255,255,255,.62)}
+.stage-empty .acts{display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.lens{width:58px;height:58px;border-radius:50%;margin:0 auto;display:grid;place-items:center;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16)}
+
+/* framing overlay */
+.overlay{position:absolute;inset:0;pointer-events:none}
+.overlay svg{width:100%;height:100%;display:block}
+.guide-line{stroke:rgba(255,255,255,.15);stroke-width:1.4;stroke-dasharray:7 11}
+.guide-box{fill:none;stroke:rgba(251,245,233,.34);stroke-width:2;stroke-dasharray:16 14}
+.guide-lbl{fill:rgba(251,245,233,.62);font-size:15px;font-weight:800;letter-spacing:2.2px;text-transform:uppercase;font-family:'Figtree',system-ui,sans-serif}
+.face-box{fill:none;stroke:var(--hua-gold);stroke-width:3;opacity:0;transition:opacity .3s}
+.face-box.on{opacity:.9}
+
+/* top-left status chips over video */
+.stage-hud{position:absolute;left:14px;top:14px;right:14px;display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;pointer-events:none}
+.hud-chip{
+  display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:6px 12px;
+  background:rgba(25,19,16,.62);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);
+  color:#fff;font-size:11.5px;font-weight:800;letter-spacing:.03em;
+}
+.hud-chip.rec{background:rgba(190,46,23,.90);border-color:rgba(255,255,255,.24)}
+.hud-chip.practice{background:rgba(95,124,76,.90);border-color:rgba(255,255,255,.24)}
+.hud-chip.paused{background:rgba(242,168,29,.92);border-color:rgba(255,255,255,.3);color:#241C17}
+.hud-spacer{flex:1}
+.rec-dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 1.15s steps(1,end) infinite}
+@keyframes blink{0%,55%{opacity:1}56%,100%{opacity:.15}}
+.timer{font-variant-numeric:tabular-nums;letter-spacing:.04em}
+
+/* coaching toast bottom of video */
+.coach{
+  position:absolute;left:14px;right:14px;bottom:14px;display:flex;flex-direction:column;gap:7px;
+  pointer-events:none;align-items:flex-start;
+}
+.coach-item{
+  display:block;border-radius:12px;padding:8px 13px;
+  background:rgba(25,19,16,.72);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.13);
+  color:#fff;font-size:12.5px;font-weight:600;line-height:1.35;max-width:min(560px,86%);
+  animation:riseIn .28s ease both;
+}
+.coach-item.warn{border-color:rgba(242,168,29,.55);background:rgba(72,48,10,.80)}
+.coach-item.bad{border-color:rgba(190,46,23,.60);background:rgba(78,20,12,.82)}
+.coach-item.good{border-color:rgba(95,124,76,.55);background:rgba(30,50,26,.80)}
+.coach-item b{font-weight:800;margin-right:5px}
+@keyframes riseIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- transport ---------- */
+.transport{display:flex;align-items:center;gap:12px;padding:14px 16px;flex-wrap:wrap}
+.tp-actions{display:flex;gap:10px;flex:0 0 auto;margin-left:auto}
+.take-meta{display:flex;flex-direction:column;gap:2px;line-height:1.25;flex:1 1 220px;min-width:0}
+@media (max-width:760px){
+  main{padding:16px 14px 48px}
+  .hrow,.steps{padding-left:16px;padding-right:16px}
+  .frow{padding:18px 16px 26px}
+  .hmeta{display:none}
+  .tp-actions{margin-left:0;flex:1 1 100%;min-width:0;flex-wrap:wrap}
+  .tp-actions .btn{flex:1 1 auto}
+  .devices{flex-direction:column;padding-left:16px;padding-right:16px}
+  .devices .field{flex:1 1 auto;width:100%}
+  .checks{padding:16px}
+  .rail-foot{gap:12px}
+}
+.take-meta .t{font-size:13.5px;font-weight:800}
+.take-meta .s{font-size:11.5px;font-weight:600;color:var(--hua-ink-3)}
+
+/* ---------- readiness panel ---------- */
+.checks{padding:18px 20px 20px}
+.checks-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.checks-head h2{margin:0;font-size:15.5px;font-weight:800;letter-spacing:-.01em}
+.score{
+  display:inline-flex;align-items:baseline;gap:3px;font-weight:800;
+  padding:5px 12px;border-radius:999px;font-size:12.5px;
+}
+.score.ok{background:rgba(95,124,76,.12);color:#42592f}
+.score.warn{background:rgba(242,168,29,.18);color:#8a5c05}
+.score.bad{background:rgba(190,46,23,.12);color:var(--hua-red)}
+.check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px}
+.check{
+  border:1px solid var(--hua-line-2);border-radius:var(--r-md);padding:12px 13px;
+  background:var(--hua-cream);display:flex;gap:11px;align-items:flex-start;transition:border-color .3s,background .3s;
+}
+.check[data-s="ok"]{background:rgba(95,124,76,.06);border-color:rgba(95,124,76,.26)}
+.check[data-s="warn"]{background:rgba(242,168,29,.09);border-color:rgba(242,168,29,.38)}
+.check[data-s="bad"]{background:rgba(190,46,23,.055);border-color:rgba(190,46,23,.28)}
+.check-ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:none;background:var(--hua-cream-2);color:var(--hua-ink-3)}
+.check[data-s="ok"] .check-ic{background:rgba(95,124,76,.16);color:var(--hua-sage)}
+.check[data-s="warn"] .check-ic{background:rgba(242,168,29,.22);color:#8a5c05}
+.check[data-s="bad"] .check-ic{background:rgba(190,46,23,.12);color:var(--hua-red)}
+.check-body{min-width:0;flex:1}
+.check-body .n{font-size:12.5px;font-weight:800;letter-spacing:-.005em}
+.check-body .d{font-size:11.5px;font-weight:600;color:var(--hua-ink-2);line-height:1.45;margin-top:2px}
+.meter{height:4px;border-radius:999px;background:var(--hua-line);overflow:hidden;margin-top:8px}
+.meter i{display:block;height:100%;border-radius:999px;background:var(--hua-ink-3);transition:width .25s ease,background .3s}
+.check[data-s="ok"] .meter i{background:var(--hua-sage)}
+.check[data-s="warn"] .meter i{background:var(--hua-gold)}
+.check[data-s="bad"] .meter i{background:var(--hua-red)}
+
+/* device row */
+.devices{display:flex;gap:10px;flex-wrap:wrap;padding:0 20px 18px}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1 1 210px}
+.field label{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--hua-ink-3)}
+select.inp,input.inp{
+  border:1px solid var(--hua-line);background:var(--hua-surface);border-radius:999px;
+  padding:9px 14px;font-size:12.5px;font-weight:600;width:100%;cursor:pointer;
+  text-overflow:ellipsis;
+}
+
+/* ---------- script rail (teleprompter) ---------- */
+.rail-card{display:flex;flex-direction:column;min-height:0;overflow:hidden;flex:1}
+.rail-head{padding:15px 18px 13px;border-bottom:1px solid var(--hua-line-2);display:flex;flex-direction:column;gap:10px;flex:none}
+.rail-title{display:flex;align-items:center;gap:10px}
+.rail-title h2{margin:0;font-size:15px;font-weight:800;letter-spacing:-.01em;flex:1}
+.progress-bar{height:5px;border-radius:999px;background:var(--hua-line-2);overflow:hidden}
+.progress-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--hua-gold),var(--hua-orange));border-radius:999px;transition:width .4s ease}
+.rail-sub{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;font-weight:700;color:var(--hua-ink-3)}
+
+.prompter{position:relative;overflow-y:auto;padding:6px 0 18px;flex:1;scroll-behavior:smooth;overscroll-behavior:contain}
+.prompter::-webkit-scrollbar{width:9px}
+.prompter::-webkit-scrollbar-thumb{background:var(--hua-line);border-radius:999px;border:3px solid var(--hua-surface)}
+
+.seg{border-bottom:1px solid var(--hua-line-2);padding:14px 18px 15px;transition:background .25s;position:relative}
+.seg:last-child{border-bottom:0}
+.seg::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:background .25s}
+.seg[data-s="active"]{background:rgba(242,168,29,.075)}
+.seg[data-s="active"]::before{background:var(--hua-orange)}
+.seg[data-s="done"]::before{background:var(--hua-sage)}
+.seg[data-s="pending"]{opacity:.62}
+.seg[data-s="pending"]:hover{opacity:.85}
+.seg-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.seg-n{
+  width:20px;height:20px;border-radius:6px;flex:none;display:grid;place-items:center;
+  font-size:10.5px;font-weight:800;background:var(--hua-cream-2);color:var(--hua-ink-3);
+}
+.seg[data-s="active"] .seg-n{background:var(--hua-orange);color:#fff}
+.seg[data-s="done"] .seg-n{background:var(--hua-sage);color:#fff}
+.seg-name{font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--hua-ink-2);flex:1;min-width:0}
+.seg[data-s="active"] .seg-name{color:var(--hua-orange)}
+.seg-time{font-size:11px;font-weight:800;color:var(--hua-ink-3);font-variant-numeric:tabular-nums}
+.seg-text{font-size:15.5px;line-height:1.62;font-weight:500;color:var(--hua-ink);letter-spacing:-.006em}
+.seg[data-s="pending"] .seg-text{font-weight:450}
+.seg-text em{font-style:normal;font-weight:800;color:var(--hua-orange)}
+.seg-text .w{transition:color .18s,opacity .18s}
+.seg[data-s="active"] .seg-text .w{color:var(--hua-ink-3)}
+.seg[data-s="active"] .seg-text .w.said{color:var(--hua-ink)}
+.seg[data-s="active"] .seg-text .w.now{color:var(--hua-orange);font-weight:800}
+.seg-note{margin-top:9px;font-size:11.5px;line-height:1.5;font-weight:600;color:var(--hua-ink-3);display:flex;gap:7px;align-items:flex-start}
+.seg-note svg{flex:none;margin-top:1px;opacity:.75}
+.seg-acts{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}
+.seg-take{
+  display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;
+  color:var(--hua-sage);background:rgba(95,124,76,.10);border-radius:999px;padding:4px 10px;
+}
+
+/* prompter controls */
+.rail-foot{border-top:1px solid var(--hua-line-2);padding:11px 14px;display:flex;align-items:center;gap:9px;flex:none;flex-wrap:wrap;background:var(--hua-cream)}
+.ctrl{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:800;color:var(--hua-ink-3);letter-spacing:.04em;text-transform:uppercase}
+.ctrl input[type=range]{width:82px;accent-color:var(--hua-orange);cursor:pointer}
+.toggle{
+  display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;
+  color:var(--hua-ink-2);cursor:pointer;user-select:none;
+}
+.toggle input{appearance:none;width:32px;height:18px;border-radius:999px;background:var(--hua-line);position:relative;cursor:pointer;transition:background .2s;flex:none;margin:0}
+.toggle input::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:var(--sh-sm);transition:transform .2s}
+.toggle input:checked{background:var(--hua-orange)}
+.toggle input:checked::after{transform:translateX(14px)}
+
+/* practice banner */
+.practice-note{
+  display:flex;gap:11px;align-items:flex-start;padding:13px 16px;border-radius:var(--r-md);
+  background:rgba(95,124,76,.09);border:1px solid rgba(95,124,76,.26);
+  font-size:12.5px;line-height:1.55;font-weight:600;color:#3d5230;
+}
+.practice-note b{font-weight:800}
+.practice-note svg{flex:none;margin-top:1px}
+
+/* ---------- review ---------- */
+.review{padding:18px 20px 20px;display:flex;flex-direction:column;gap:14px}
+.review h2{margin:0;font-size:15.5px;font-weight:800;letter-spacing:-.01em}
+.take-list{display:flex;flex-direction:column;gap:9px}
+.take-row{
+  display:flex;align-items:center;gap:12px;padding:11px 13px;border-radius:var(--r-md);
+  border:1px solid var(--hua-line-2);background:var(--hua-cream);
+}
+.take-row[data-s="empty"]{opacity:.6;border-style:dashed}
+.take-thumb{width:74px;height:42px;border-radius:8px;background:var(--stage);flex:none;object-fit:cover;border:1px solid var(--hua-line)}
+.take-info{flex:1;min-width:0}
+.take-info .n{font-size:12.5px;font-weight:800}
+.take-info .d{font-size:11.5px;font-weight:600;color:var(--hua-ink-3);margin-top:1px}
+.review-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.kpi{border:1px solid var(--hua-line-2);border-radius:var(--r-md);padding:12px 14px;background:var(--hua-cream)}
+.kpi .k{font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--hua-ink-3)}
+.kpi .v{font-size:21px;font-weight:800;letter-spacing:-.03em;margin-top:3px;font-variant-numeric:tabular-nums}
+.kpi .v.accent{color:var(--hua-orange)}
+.kpi .v.sage{color:var(--hua-sage)}
+
+/* modal */
+.scrim{position:fixed;inset:0;background:rgba(36,28,23,.52);backdrop-filter:blur(3px);z-index:90;display:grid;place-items:center;padding:24px}
+.modal{background:var(--hua-surface);border-radius:24px;max-width:520px;width:100%;padding:28px 30px;box-shadow:var(--sh-lg);animation:riseIn .25s ease both}
+.modal h3{margin:12px 0 8px;font-size:20px;font-weight:800;letter-spacing:-.02em}
+.modal p{margin:0;font-size:13.5px;line-height:1.65;color:var(--hua-ink-2)}
+.modal .acts{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.hidden{display:none !important}
+
+footer.site{border-top:1px solid var(--hua-line);margin-top:8px}
+.frow{max-width:1580px;margin:0 auto;padding:20px 28px 30px;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.frow p{margin:0;font-size:11.5px;line-height:1.6;color:var(--hua-ink-3);max-width:76ch;font-weight:600}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="hrow">
+    <img class="seal" src="data:image/png;base64,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" alt="Hindu University of America seal">
+    <div class="hname">
+      <div class="k">Hindu University of America &middot; Advancement</div>
+      <div class="t">Share Your Story &mdash; Video Testimonial</div>
+    </div>
+    <div class="hspace"></div>
+    <div class="hmeta">
+      <div class="hstat">
+        <div class="eyebrow">Segments captured</div>
+        <div class="v" id="hCaptured">0 of 5</div>
+      </div>
+      <div class="hstat">
+        <div class="eyebrow">Runtime</div>
+        <div class="v accent" id="hRuntime">0:00</div>
+      </div>
+    </div>
+  </div>
+  <nav class="steps" id="steps" aria-label="Recording stages">
+    <button class="step" data-step="0" data-state="active"><span class="n">1</span>Setup &amp; check</button>
+    <span class="step-sep"></span>
+    <button class="step" data-step="1" data-state="idle"><span class="n">2</span>Practice run</button>
+    <span class="step-sep"></span>
+    <button class="step" data-step="2" data-state="idle"><span class="n">3</span>Record</button>
+    <span class="step-sep"></span>
+    <button class="step" data-step="3" data-state="idle"><span class="n">4</span>Review &amp; submit</button>
+  </nav>
+</header>
+
+<main>
+  <!-- ============ LEFT: stage ============ -->
+  <section class="stage-wrap">
+    <div class="stage is-off" id="stage">
+      <video id="preview" playsinline autoplay muted></video>
+      <video id="playback" playsinline class="hidden" controls style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#191310"></video>
+
+      <div class="overlay" id="overlay">
+        <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <line class="guide-line" x1="533" y1="0" x2="533" y2="900"></line>
+          <line class="guide-line" x1="1067" y1="0" x2="1067" y2="900"></line>
+          <line class="guide-line" x1="0" y1="300" x2="1600" y2="300"></line>
+          <line class="guide-line" x1="0" y1="600" x2="1600" y2="600"></line>
+          <rect class="guide-box" x="530" y="66" width="540" height="820" rx="44"></rect>
+          <text class="guide-lbl" x="800" y="48" text-anchor="middle">Frame yourself here</text>
+          <rect class="face-box" id="faceBox" x="660" y="160" width="280" height="300" rx="18"></rect>
+        </svg>
+      </div>
+
+      <div class="stage-hud" id="hud">
+        <div class="hud-chip practice hidden" id="chipPractice"><span class="dot" style="background:#fff"></span>Practice &mdash; not saved</div>
+        <div class="hud-chip rec hidden" id="chipRec"><span class="rec-dot"></span>REC<span class="timer" id="recTimer">0:00</span></div>
+        <div class="hud-chip paused hidden" id="chipPaused">Paused</div>
+        <div class="hud-spacer"></div>
+        <div class="hud-chip hidden" id="chipSeg">Segment 1 of 5</div>
+      </div>
+
+      <div class="coach" id="coach"></div>
+
+      <div class="stage-empty" id="stageEmpty">
+        <div>
+          <div class="lens">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F2A81D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/>
+            </svg>
+          </div>
+          <h3>Let&rsquo;s set up your camera</h3>
+          <p>We&rsquo;ll check your lighting, framing and background before you record anything. Nothing leaves your device until you press submit.</p>
+          <div class="acts">
+            <button class="btn btn-primary" id="btnEnable">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+              Turn on camera &amp; mic
+            </button>
+            <button class="btn btn-dark" id="btnDemo">Preview without camera</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- transport -->
+    <div class="card transport" id="transport">
+      <div class="take-meta">
+        <div class="t" id="tpTitle">Camera off</div>
+        <div class="s" id="tpSub">Turn on your camera to begin the readiness check</div>
+      </div>
+      <div class="tp-actions">
+      <button class="btn" id="btnPractice" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.9 2.9M16.2 16.2l2.9 2.9M2 12h4M18 12h4M4.9 19.1l2.9-2.9M16.2 7.8l2.9-2.9"/></svg>
+        Practice run
+      </button>
+      <button class="btn" id="btnPause" disabled>Pause</button>
+      <button class="btn" id="btnRedo" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"/></svg>
+        Redo this part
+      </button>
+      <button class="btn btn-rec" id="btnRecord" disabled>
+        <span class="dot" style="background:#fff"></span> Record segment
+      </button>
+      </div>
+    </div>
+
+    <!-- readiness checks -->
+    <div class="card" id="checksCard">
+      <div class="checks">
+        <div class="checks-head">
+          <h2>Room &amp; camera check</h2>
+          <span class="score bad" id="readyScore">Waiting for camera</span>
+          <div style="flex:1"></div>
+          <span class="eyebrow" id="checkTick">Live &middot; sampled 4&times;/sec</span>
+        </div>
+        <div class="check-grid" id="checkGrid"></div>
+      </div>
+      <div class="devices">
+        <div class="field"><label for="selVideo">Camera</label><select class="inp" id="selVideo"><option>Camera not enabled</option></select></div>
+        <div class="field"><label for="selAudio">Microphone</label><select class="inp" id="selAudio"><option>Mic not enabled</option></select></div>
+        <div class="field" style="flex:0 1 auto;justify-content:flex-end;min-width:0">
+          <label>&nbsp;</label>
+          <div style="display:flex;gap:16px;padding:9px 0;flex-wrap:wrap">
+            <label class="toggle"><input type="checkbox" id="tgMirror" checked> Mirror my preview</label>
+            <label class="toggle hidden" id="wrapClutter"><input type="checkbox" id="tgClutter"> Simulate a cluttered wall</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- review -->
+    <div class="card hidden" id="reviewCard">
+      <div class="review">
+        <h2>Your testimonial</h2>
+        <div class="review-summary" id="reviewKpis"></div>
+        <div class="take-list" id="takeList"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+          <button class="btn btn-primary" id="btnSubmit">Submit testimonial</button>
+          <button class="btn" id="btnDownload">Download my takes</button>
+          <button class="btn btn-ghost" id="btnBackToRecord">Back to recording</button>
+        </div>
+        <p style="margin:0;font-size:11.5px;line-height:1.6;color:var(--hua-ink-3);font-weight:600">
+          Submitting sends your takes to the HUA Advancement team and grants the University permission to use the recording in fundraising and communications material. You can withdraw that permission at any time by writing to advancement@hua.edu.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RIGHT: prompter rail ============ -->
+  <aside class="rail">
+    <div class="card rail-card">
+      <div class="rail-head">
+        <div class="rail-title">
+          <h2 id="railTitle">Your script</h2>
+          <span class="pill" id="railMode" style="background:var(--hua-cream-2);color:var(--hua-ink-2)">Not started</span>
+        </div>
+        <div class="progress-bar"><i id="railProgress" style="width:0%"></i></div>
+        <div class="rail-sub">
+          <span id="railCount">0 of 5 segments captured</span>
+          <span id="railTarget">Target 2:30</span>
+        </div>
+      </div>
+      <div class="prompter" id="prompter"></div>
+      <div class="rail-foot">
+        <label class="ctrl" title="Teleprompter pace">Pace
+          <input type="range" id="rngPace" min="90" max="190" step="5" value="135">
+          <span id="lblPace" style="width:60px;white-space:nowrap;text-transform:none;letter-spacing:0">135 wpm</span>
+        </label>
+        <div style="flex:1"></div>
+        <label class="ctrl" title="Script text size">Size
+          <input type="range" id="rngSize" min="13" max="24" step="1" value="15.5" style="width:64px">
+        </label>
+      </div>
+    </div>
+
+    <div class="practice-note" id="practiceNote">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F7C4C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <div><b>Start with a practice run.</b> It plays the whole script through with the prompter and the live room check, but records nothing. Most people need one pass to find their pace.</div>
+    </div>
+  </aside>
+</main>
+
+<footer class="site">
+  <div class="frow">
+    <img src="data:image/png;base64,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" alt="" style="width:34px;height:34px;opacity:.8">
+    <p>
+      <b>सा विद्या या विमुक्तये</b> &mdash; Hindu University of America, founded 1993.
+      Recording happens entirely in your browser. Video and audio are held in memory on this device and are only transmitted when you press <b>Submit testimonial</b>.
+      Questions about how your story will be used? Write to advancement@hua.edu.
+    </p>
+  </div>
+</footer>
+
+<div class="scrim hidden" id="scrim">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   Configuration
+   ============================================================ */
+// Set to your collection endpoint to enable real uploads. When null, the
+// page keeps every take in memory and offers a local download instead.
+var UPLOAD_ENDPOINT = null;
+
+var SCRIPT = [
+  { name:"Introduce yourself", target:20,
+    note:"Say it the way you would to someone sitting across from you. Full name, then how you are connected to HUA.",
+    text:"My name is <em>[your name]</em>, and I have been part of the Hindu University of America community since [year]. I came to HUA as a [student / donor / faculty member / parent]." },
+  { name:"Why you chose HUA", target:35,
+    note:"One reason, said clearly, beats three reasons said quickly.",
+    text:"I had been looking for somewhere to study the Hindu knowledge traditions <em>seriously</em> — not as folklore, and not as something frozen in the past. What I found at HUA was rigour and reverence in the same room. The faculty treat these texts as living scholarship, and they expect you to do the same." },
+  { name:"A moment that mattered", target:40,
+    note:"This is the heart of the piece. Pick one specific moment — a class, a conversation, a text that changed something.",
+    text:"There was one seminar I still think about. We spent three weeks on a single passage, and by the end of it I understood something I had recited my whole life for the very first time. That is when I realised what this University actually does: it gives you back your own inheritance, <em>with understanding</em>." },
+  { name:"What it made possible", target:30,
+    note:"Concrete outcomes land hardest. What can you do now that you could not do before?",
+    text:"That training changed how I teach my own children, how I speak in my community, and how I read. I am no longer repeating what I was told — I can go to the source and think it through myself. <em>That is what HUA gave me.</em>" },
+  { name:"Your invitation", target:25,
+    note:"Look straight into the lens for this one. Speak to one person, not to a crowd.",
+    text:"Hindu University of America runs on people who decide this knowledge is worth protecting. If that is you, I hope you will <em>join us</em> — as a student, as a donor, or simply as someone who tells others we are here." }
+];
+
+/* ============================================================
+   Small helpers
+   ============================================================ */
+function $(s){ return document.querySelector(s); }
+function el(tag, cls, html){ var n=document.createElement(tag); if(cls) n.className=cls; if(html!=null) n.innerHTML=html; return n; }
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function mmss(sec){ sec=Math.max(0,Math.floor(sec)); return Math.floor(sec/60)+":"+String(sec%60).padStart(2,"0"); }
+function lerp(a,b,t){ return a+(b-a)*t; }
+function words(str){ return str.replace(/<[^>]+>/g," ").trim().split(/\s+/).filter(Boolean).length; }
+
+var ICONS = {
+  sun:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+  contrast:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" stroke="none"/></svg>',
+  wall:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12M15 3v6"/></svg>',
+  face:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>',
+  steady:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="5"/></svg>',
+  mic:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></svg>',
+  bulb:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 22h4M12 2a6 6 0 0 1 4 10.5V15H8v-2.5A6 6 0 0 1 12 2z"/></svg>'
+};
+
+/* ============================================================
+   State
+   ============================================================ */
+var S = {
+  stage: 0,                 // 0 setup, 1 practice, 2 record, 3 review
+  stream: null,
+  demo: false,
+  mode: "idle",             // idle | practice | recording | paused
+  activeSeg: 0,
+  takes: new Array(SCRIPT.length).fill(null),
+  attempts: new Array(SCRIPT.length).fill(0),
+  segElapsed: 0,
+  segDuration: 0,
+  pace: 135,
+  mirror: true,
+  metrics: null,
+  qualitySamples: [],
+  ready: false
+};
+
+/* ============================================================
+   Teleprompter
+   ============================================================ */
+var prompterEl = $("#prompter");
+
+function segDurationFor(i){
+  return Math.max(SCRIPT[i].target * 0.8, words(SCRIPT[i].text) / S.pace * 60);
+}
+
+function buildPrompter(){
+  prompterEl.innerHTML = "";
+  SCRIPT.forEach(function(seg, i){
+    var node = el("div","seg");
+    node.dataset.s = "pending";
+    node.dataset.i = i;
+
+    var top = el("div","seg-top");
+    top.appendChild(el("span","seg-n", String(i+1)));
+    top.appendChild(el("span","seg-name", seg.name));
+    top.appendChild(el("span","seg-time", "~"+mmss(seg.target)));
+    node.appendChild(top);
+
+    // wrap each word so the prompter can advance through the line
+    var html = seg.text.replace(/(<em>|<\/em>)|([^\s<]+)/g, function(m, tag, word){
+      return tag ? tag : '<span class="w">'+word+'</span>';
+    });
+    var body = el("div","seg-text", html);
+    node.appendChild(body);
+
+    node.appendChild(el("div","seg-note",
+      '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 22h4M12 2a6 6 0 0 1 4 10.5V15H8v-2.5A6 6 0 0 1 12 2z"/></svg><span>'+seg.note+'</span>'));
+
+    node.appendChild(el("div","seg-acts"));
+    node.addEventListener("click", function(){ selectSegment(i); });
+    prompterEl.appendChild(node);
+  });
+  renderPrompter();
+}
+
+function segNode(i){ return prompterEl.children[i]; }
+
+function renderPrompter(){
+  SCRIPT.forEach(function(seg, i){
+    var node = segNode(i);
+    var st = (i === S.activeSeg && S.mode !== "idle") ? "active"
+           : (S.takes[i] ? "done" : (i === S.activeSeg ? "active" : "pending"));
+    node.dataset.s = st;
+
+    var acts = node.querySelector(".seg-acts");
+    acts.innerHTML = "";
+    if(S.takes[i]){
+      var t = S.takes[i];
+      acts.appendChild(el("span","seg-take",
+        '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Take '+t.takeNo+' &middot; '+mmss(t.dur)));
+      var redo = el("button","btn btn-sm","Redo");
+      redo.addEventListener("click", function(e){ e.stopPropagation(); redoSegment(i); });
+      acts.appendChild(redo);
+      var play = el("button","btn btn-sm btn-ghost","Watch");
+      play.addEventListener("click", function(e){ e.stopPropagation(); playTake(i); });
+      acts.appendChild(play);
+    } else if(i === S.activeSeg && S.mode === "idle" && S.ready){
+      acts.appendChild(el("span","eyebrow","Up next — press Record segment"));
+    }
+  });
+  updateProgress();
+}
+
+function highlightWords(frac){
+  var node = segNode(S.activeSeg);
+  if(!node) return;
+  var ws = node.querySelectorAll(".w");
+  var idx = Math.floor(frac * ws.length);
+  for(var i=0;i<ws.length;i++){
+    ws[i].classList.toggle("said", i < idx);
+    ws[i].classList.toggle("now", i === idx);
+  }
+  var cur = ws[idx];
+  if(cur){
+    var pr = prompterEl.getBoundingClientRect(), cr = cur.getBoundingClientRect();
+    var want = cr.top - pr.top - pr.height * 0.38;
+    if(Math.abs(want) > 26) prompterEl.scrollTop += want;
+  }
+}
+
+function clearHighlight(i){
+  var node = segNode(i == null ? S.activeSeg : i);
+  if(!node) return;
+  node.querySelectorAll(".w").forEach(function(w){ w.classList.remove("said","now"); });
+}
+
+function scrollToSegment(i){
+  var node = segNode(i);
+  if(node) prompterEl.scrollTop = node.offsetTop - 12;
+}
+
+function updateProgress(){
+  var done = S.takes.filter(Boolean).length;
+  var total = S.takes.reduce(function(a,t){ return a + (t ? t.dur : 0); }, 0);
+  var targetTotal = SCRIPT.reduce(function(a,s){ return a + s.target; }, 0);
+  $("#railProgress").style.width = (done/SCRIPT.length*100)+"%";
+  $("#railCount").textContent = done+" of "+SCRIPT.length+" segments captured";
+  $("#railTarget").textContent = "Target "+mmss(targetTotal);
+  $("#hCaptured").textContent = done+" of "+SCRIPT.length;
+  $("#hRuntime").textContent = mmss(total);
+}
+
+/* ============================================================
+   Media capture
+   ============================================================ */
+var video = $("#preview"), stageEl = $("#stage");
+
+async function enableCamera(videoId, audioId){
+  var constraints = {
+    video: videoId ? { deviceId:{ exact:videoId }, width:{ideal:1280}, height:{ideal:720} }
+                   : { width:{ideal:1280}, height:{ideal:720}, facingMode:"user" },
+    audio: audioId ? { deviceId:{ exact:audioId }, echoCancellation:true, noiseSuppression:true }
+                   : { echoCancellation:true, noiseSuppression:true }
+  };
+  var stream = await navigator.mediaDevices.getUserMedia(constraints);
+  attachStream(stream, false);
+  await listDevices();
+}
+
+function attachStream(stream, isDemo){
+  if(S.stream) S.stream.getTracks().forEach(function(t){ t.stop(); });
+  S.stream = stream;
+  S.demo = !!isDemo;
+  video.srcObject = stream;
+  video.play().catch(function(){});
+  stageEl.classList.remove("is-off");
+  $("#stageEmpty").classList.add("hidden");
+  video.classList.toggle("mirror", S.mirror);
+  startAudioMeter(stream);
+  startVision();
+  S.stage = 0;
+  setTransport("Framing up", isDemo ? "Simulated room — the checks below are running on the preview"
+                                    : "Hold still while we read the room");
+  renderSteps();
+}
+
+async function listDevices(){
+  try{
+    var devs = await navigator.mediaDevices.enumerateDevices();
+    fillSelect($("#selVideo"), devs.filter(function(d){ return d.kind==="videoinput"; }), "Camera");
+    fillSelect($("#selAudio"), devs.filter(function(d){ return d.kind==="audioinput"; }), "Microphone");
+  }catch(e){}
+}
+function fillSelect(sel, devs, label){
+  sel.innerHTML = "";
+  if(!devs.length){ sel.appendChild(el("option",null,label+" unavailable")); return; }
+  devs.forEach(function(d,i){
+    var o = el("option", null, d.label || (label+" "+(i+1)));
+    o.value = d.deviceId; sel.appendChild(o);
+  });
+  var cur = S.stream && S.stream.getTracks().find(function(t){
+    return t.kind === (label === "Camera" ? "video" : "audio");
+  });
+  if(cur && cur.getSettings().deviceId) sel.value = cur.getSettings().deviceId;
+}
+
+/* ============================================================
+   Demo scene — a synthetic room so the whole pipeline is
+   viewable (and testable) without camera permission.
+   ============================================================ */
+var demoCanvas, demoCtx, demoT = 0, demoRAF = 0, demoClutter = false;
+
+function startDemo(){
+  demoCanvas = document.createElement("canvas");
+  demoCanvas.width = 960; demoCanvas.height = 540;
+  demoCtx = demoCanvas.getContext("2d");
+  drawDemo();
+  var stream = demoCanvas.captureStream(30);
+  try{
+    var ac = new (window.AudioContext||window.webkitAudioContext)();
+    var dest = ac.createMediaStreamDestination();
+    var buf = ac.createBuffer(1, ac.sampleRate*2, ac.sampleRate);
+    var ch = buf.getChannelData(0);
+    for(var i=0;i<ch.length;i++) ch[i] = (Math.random()*2-1) * 0.5;
+    var src = ac.createBufferSource(); src.buffer = buf; src.loop = true;
+    var g = ac.createGain(); g.gain.value = 0.22;
+    var lfo = ac.createOscillator(); lfo.frequency.value = 0.6;
+    var lfoG = ac.createGain(); lfoG.gain.value = 0.09;
+    lfo.connect(lfoG); lfoG.connect(g.gain);
+    src.connect(g); g.connect(dest);
+    src.start(); lfo.start();
+    dest.stream.getAudioTracks().forEach(function(t){ stream.addTrack(t); });
+  }catch(e){}
+  attachStream(stream, true);
+  $("#selVideo").innerHTML = "<option>Simulated camera (preview mode)</option>";
+  $("#selAudio").innerHTML = "<option>Simulated microphone (preview mode)</option>";
+  $("#wrapClutter").classList.remove("hidden");
+}
+
+function drawDemo(){
+  demoRAF = requestAnimationFrame(drawDemo);
+  demoT += 1/60;
+  var c = demoCtx, W = demoCanvas.width, H = demoCanvas.height;
+
+  // wall
+  var g = c.createRadialGradient(W*0.62, H*0.18, 40, W*0.5, H*0.5, W*0.85);
+  g.addColorStop(0, "#f6ecdc"); g.addColorStop(1, "#dbcbb2");
+  c.fillStyle = g; c.fillRect(0,0,W,H);
+
+  if(demoClutter){
+    c.save();
+    for(var k=0;k<26;k++){
+      var bx = (k%13)*46 + 14, by = k<13 ? H*0.18 : H*0.52;
+      c.fillStyle = ["#6b4a2f","#8a3d05","#3d472b","#645c50","#b2622d"][k%5];
+      c.fillRect(bx, by, 30, 96 + (k*13)%40);
+    }
+    c.fillStyle = "rgba(60,40,25,.35)"; c.fillRect(0, H*0.16, W, 8);
+    c.restore();
+  }
+
+  // subject: shoulders + head, gentle sway
+  var sway = Math.sin(demoT*0.7)*6, bob = Math.sin(demoT*0.5)*3;
+  var cx = W*0.5 + sway, headY = H*0.42 + bob;
+  c.fillStyle = "#8a8796";                       // shoulders / clothing
+  c.beginPath();
+  c.ellipse(cx, H*1.16 + bob, W*0.38, H*0.50, 0, 0, Math.PI*2); c.fill();
+  c.fillStyle = "#c08262";                       // neck
+  c.fillRect(cx-44, headY, 88, 210);
+  c.fillStyle = "#d4966f";                       // head
+  c.beginPath(); c.ellipse(cx, headY, 118, 150, 0, 0, Math.PI*2); c.fill();
+  c.fillStyle = "#2a211c";                       // hair
+  c.beginPath(); c.ellipse(cx, headY-95, 121, 62, 0, Math.PI, 0); c.fill();
+  c.fillStyle = "rgba(30,20,14,.55)";            // eyes
+  c.beginPath(); c.ellipse(cx-42, headY-12, 11, 6, 0, 0, Math.PI*2); c.fill();
+  c.beginPath(); c.ellipse(cx+42, headY-12, 11, 6, 0, 0, Math.PI*2); c.fill();
+
+  // gentle key-light falloff so the exposure reading is plausible
+  var kg = c.createLinearGradient(0,0,W,0);
+  kg.addColorStop(0,"rgba(0,0,0,.07)"); kg.addColorStop(.55,"rgba(0,0,0,0)"); kg.addColorStop(1,"rgba(255,240,210,.07)");
+  c.fillStyle = kg; c.fillRect(0,0,W,H);
+}
+
+/* ============================================================
+   Room analysis — every metric below is measured off the live
+   frame on a downscaled copy, four times a second.
+   ============================================================ */
+var AW = 160, AH = 90;
+var aCanvas = document.createElement("canvas");
+aCanvas.width = AW; aCanvas.height = AH;
+var aCtx = aCanvas.getContext("2d", { willReadFrequently:true });
+var lumaBuf = new Float32Array(AW*AH), prevLuma = null;
+var skinMask = new Uint8Array(AW*AH), colHist = new Int32Array(AW), rowHist = new Int32Array(AH);
+var visionRAF = 0, lastAnalyse = 0;
+var faceDetector = null;
+try{ if(window.FaceDetector) faceDetector = new window.FaceDetector({ fastMode:true, maxDetectedFaces:1 }); }catch(e){}
+var detectedFace = null, faceBusy = false;
+
+function startVision(){
+  if(visionRAF) cancelAnimationFrame(visionRAF);
+  prevLuma = null;
+  loopVision();
+}
+
+function loopVision(ts){
+  visionRAF = requestAnimationFrame(loopVision);
+  if(!video.videoWidth) return;
+  if(ts - lastAnalyse < 240) return;
+  lastAnalyse = ts;
+  try{ analyseFrame(); }catch(e){}
+}
+
+function analyseFrame(){
+  aCtx.drawImage(video, 0, 0, AW, AH);
+  var d = aCtx.getImageData(0,0,AW,AH).data;
+
+  var sum=0, blown=0, crushed=0, sumL=0, sumR=0, nL=0, nR=0;
+  skinMask.fill(0); colHist.fill(0); rowHist.fill(0);
+  var skinN = 0;
+  for(var y=0; y<AH; y++){
+    for(var x=0; x<AW; x++){
+      var p=(y*AW+x)*4, r=d[p], g=d[p+1], b=d[p+2];
+      var Y = 0.2126*r + 0.7152*g + 0.0722*b;
+      lumaBuf[y*AW+x] = Y;
+      sum += Y;
+      if(Y>246) blown++; else if(Y<18) crushed++;
+      if(x < AW*0.42){ sumL += Y; nL++; } else if(x > AW*0.58){ sumR += Y; nR++; }
+      var mx = Math.max(r,g,b), mn = Math.min(r,g,b);
+      if(r>95 && g>40 && b>20 && (mx-mn)>15 && Math.abs(r-g)>15 && r>g && r>b && y < AH*0.82){
+        skinMask[y*AW+x] = 1; colHist[x]++; skinN++;
+      }
+    }
+  }
+  var N = AW*AH, mean = sum/N;
+
+  // --- background ring: everything outside the subject column ---
+  var bx0 = AW*0.30, bx1 = AW*0.70, by1 = AH*0.14;
+  var grad=0, gn=0, bSum=0, bSq=0;
+  for(var y2=1; y2<AH-1; y2++){
+    for(var x2=1; x2<AW-1; x2++){
+      var inSubject = (x2>bx0 && x2<bx1 && y2>by1);
+      if(inSubject) continue;
+      var i0 = y2*AW+x2;
+      var gx = Math.abs(lumaBuf[i0+1] - lumaBuf[i0-1]);
+      var gy = Math.abs(lumaBuf[i0+AW] - lumaBuf[i0-AW]);
+      grad += gx+gy; gn++;
+      bSum += lumaBuf[i0]; bSq += lumaBuf[i0]*lumaBuf[i0];
+    }
+  }
+  var gMean = gn ? grad/gn : 0;
+  var bMean = gn ? bSum/gn : 0;
+  var bStd  = gn ? Math.sqrt(Math.max(0, bSq/gn - bMean*bMean)) : 0;
+
+  // --- motion between frames, with global exposure drift removed ---
+  var motion = 0;
+  if(prevLuma){
+    var diff=0, dsum=0;
+    for(var i3=0;i3<N;i3++){ dsum += lumaBuf[i3]-prevLuma[i3]; }
+    var drift = dsum/N;
+    for(var i4=0;i4<N;i4++){ diff += Math.abs(lumaBuf[i4]-prevLuma[i4]-drift); }
+    motion = diff/N;
+  } else { prevLuma = new Float32Array(N); }
+  prevLuma.set(lumaBuf);
+
+  // --- face box: real detector when the browser has one, skin-mask otherwise ---
+  if(faceDetector && !faceBusy){
+    faceBusy = true;
+    faceDetector.detect(aCanvas).then(function(f){
+      detectedFace = (f && f[0]) ? f[0].boundingBox : null; faceBusy = false;
+    }).catch(function(){ faceBusy = false; faceDetector = null; });
+  }
+  var face = detectedFace;
+  if(!face && skinN > 40) face = dominantSkinBox();
+
+  var faceMean = mean, faceBlown = 0;
+  if(face){
+    var fx0 = clamp(Math.floor(face.x),0,AW-1), fx1 = clamp(Math.ceil(face.x+face.width),1,AW);
+    var fy0 = clamp(Math.floor(face.y),0,AH-1), fy1 = clamp(Math.ceil(face.y+face.height),1,AH);
+    var fs=0, fn=0, fb=0;
+    for(var fy=fy0; fy<fy1; fy++){
+      for(var fx=fx0; fx<fx1; fx++){
+        var L = lumaBuf[fy*AW+fx]; fs += L; fn++; if(L>246) fb++;
+      }
+    }
+    if(fn){ faceMean = fs/fn; faceBlown = fb/fn*100; }
+  }
+
+  S.metrics = {
+    mean: mean,
+    faceMean: faceMean,
+    faceBlown: faceBlown,
+    blown: blown/N*100,
+    crushed: crushed/N*100,
+    balance: (nL&&nR) ? Math.abs(sumL/nL - sumR/nR) / Math.max(1, mean) : 0,
+    bgEdge: gMean,
+    bgStd: bStd,
+    motion: motion,
+    face: face,
+    faceW: face ? face.width/AW : 0,
+    faceCx: face ? (face.x + face.width/2)/AW : 0.5,
+    headroom: face ? face.y/AH : 0,
+    audio: audioLevel
+  };
+  scoreRoom();
+  drawFaceBox(face);
+}
+
+// Widen out from the busiest column until the count falls away, then do the
+// same for rows inside that band. Scattered background matches never form a
+// tall enough column to win the peak, so they drop out.
+function dominantSkinBox(){
+  var pc = 0, x;
+  for(x=1; x<AW; x++) if(colHist[x] > colHist[pc]) pc = x;
+  if(colHist[pc] < 3) return null;
+  var cThr = colHist[pc] * 0.30;
+  var x0 = pc, x1 = pc;
+  while(x0 > 0    && colHist[x0-1] >= cThr) x0--;
+  while(x1 < AW-1 && colHist[x1+1] >= cThr) x1++;
+
+  var y, n = 0;
+  for(y=0; y<AH; y++){
+    var c = 0;
+    for(x=x0; x<=x1; x++) c += skinMask[y*AW+x];
+    rowHist[y] = c; if(c > n) n = c;
+  }
+  if(n < 3) return null;
+  var pr = 0;
+  for(y=1; y<AH; y++) if(rowHist[y] > rowHist[pr]) pr = y;
+  var rThr = n * 0.30;
+  var y0 = pr, y1 = pr;
+  while(y0 > 0    && rowHist[y0-1] >= rThr) y0--;
+  while(y1 < AH-1 && rowHist[y1+1] >= rThr) y1++;
+
+  return { x:x0, y:y0, width:Math.max(4, x1-x0+1), height:Math.max(4, y1-y0+1) };
+}
+
+function drawFaceBox(face){
+  var box = $("#faceBox");
+  if(!face){ box.classList.remove("on"); return; }
+  box.classList.add("on");
+  var fx = video.classList.contains("mirror") ? (AW - face.x - face.width) : face.x;
+  box.setAttribute("x", (fx/AW*1600).toFixed(0));
+  box.setAttribute("y", (face.y/AH*900).toFixed(0));
+  box.setAttribute("width", (face.width/AW*1600).toFixed(0));
+  box.setAttribute("height", (face.height/AH*900).toFixed(0));
+}
+
+/* ============================================================
+   Microphone level
+   ============================================================ */
+var audioCtx = null, analyser = null, audioBuf = null, audioLevel = -100, audioPeak = 0, audioRAF = 0;
+
+function startAudioMeter(stream){
+  if(!stream.getAudioTracks().length) return;
+  try{
+    if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state === "suspended") audioCtx.resume();
+    var src = audioCtx.createMediaStreamSource(stream);
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 1024; analyser.smoothingTimeConstant = 0.6;
+    src.connect(analyser);
+    audioBuf = new Float32Array(analyser.fftSize);
+    if(audioRAF) cancelAnimationFrame(audioRAF);
+    pollAudio();
+  }catch(e){}
+}
+
+function pollAudio(){
+  audioRAF = requestAnimationFrame(pollAudio);
+  if(!analyser) return;
+  analyser.getFloatTimeDomainData(audioBuf);
+  var sum=0, peak=0;
+  for(var i=0;i<audioBuf.length;i++){
+    var v = audioBuf[i]; sum += v*v;
+    var a = Math.abs(v); if(a>peak) peak = a;
+  }
+  var rms = Math.sqrt(sum/audioBuf.length);
+  var db = 20*Math.log10(Math.max(rms, 1e-7));
+  audioLevel = audioLevel === -100 ? db : lerp(audioLevel, db, 0.25);
+  audioPeak = Math.max(audioPeak*0.96, peak);
+}
+
+/* ============================================================
+   Scoring — each check turns one measurement into 0..100
+   ============================================================ */
+var CHECKS = [
+  { key:"light", name:"Light on your face", icon:ICONS.sun,
+    score:function(m){
+      var s = 100 - Math.abs(m.faceMean - 142);
+      if(m.faceBlown > 2) s -= (m.faceBlown-2)*6;
+      if(m.crushed > 25)  s -= (m.crushed-25)*2.0;
+      return clamp(s,0,100);
+    },
+    say:function(m,s){
+      if(m.faceBlown > 3) return "Your face is clipping to white — move off the window, or dim your key light.";
+      if(!m.face && m.mean < 70) return "The room is very dark. Face a window, or put a lamp behind your camera.";
+      if(m.faceMean < 95) return "Your face is under-lit. Put a light in front of you — not behind you.";
+      if(m.faceMean > 205) return "Your face is blown out. Soften the light or step further from it.";
+      if(s >= 72) return "Nicely exposed. Your face is reading clearly.";
+      if(s >= 48) return "Workable, but a little more light on your face would help.";
+      return m.faceMean < 142 ? "Too dim to record well — add a light in front of you."
+                              : "Too bright — soften your key light or move off the window.";
+    }},
+  { key:"even", name:"Even, soft lighting", icon:ICONS.contrast,
+    score:function(m){ return clamp(100 - m.balance*300, 0, 100); },
+    say:function(m,s){
+      if(s < 45) return "One side of your face is much brighter than the other. Move your light in front of you, not beside you.";
+      if(s < 70) return "Slightly side-lit. Turning a few degrees toward the brighter side will even it out.";
+      return "Light is falling evenly across your face.";
+    }},
+  { key:"bg", name:"Clean, open background", icon:ICONS.wall,
+    score:function(m){
+      var edge = clamp(100 - (m.bgEdge - 2.5)*4.6, 0, 100);
+      var flat = clamp(100 - (m.bgStd - 12)*2.6, 0, 100);
+      return clamp(edge*0.62 + flat*0.38, 0, 100);
+    },
+    say:function(m,s){
+      if(s < 45) return "The background is busy. A plain wall — or two metres of space behind you — will keep the focus on you.";
+      if(s < 70) return "There is some clutter behind you. Clearing the shelf or stepping forward will help.";
+      return "Background is clean and open — exactly right.";
+    }},
+  { key:"frame", name:"Framing &amp; headroom", icon:ICONS.face,
+    score:function(m){
+      if(!m.face) return 0;
+      var size = 100 - Math.abs(m.faceW - 0.24)*430;
+      var ctr  = 100 - Math.abs(m.faceCx - 0.5)*560;
+      var head = 100 - Math.abs(m.headroom - 0.22)*300;
+      return clamp((size*0.4 + ctr*0.3 + head*0.3), 0, 100);
+    },
+    say:function(m,s){
+      if(!m.face) return "We cannot find your face yet. Sit square to the camera in an evenly lit spot.";
+      if(m.faceW < 0.16) return "You are a little far away. Move closer, or raise the camera to eye level.";
+      if(m.faceW > 0.34) return "You are very close to the lens. Sit back about an arm's length.";
+      if(Math.abs(m.faceCx-0.5) > 0.12) return "Centre yourself in the frame.";
+      if(m.headroom < 0.08) return "Your head is cut off at the top — tilt the camera down slightly.";
+      if(m.headroom > 0.34) return "There is a lot of empty space above your head. Raise your seat, or lower the camera.";
+      return "Well framed, at eye level.";
+    }},
+  { key:"steady", name:"Camera steadiness", icon:ICONS.steady,
+    score:function(m){ return clamp(100 - Math.max(0, m.motion-3.0)*7, 0, 100); },
+    say:function(m,s){
+      if(s < 55) return "The picture is moving a lot. Rest your device on something solid rather than holding it.";
+      return "Camera is steady.";
+    }},
+  { key:"mic", name:"Microphone level", icon:ICONS.mic,
+    score:function(m){
+      if(m.audio <= -99) return 0;
+      if(m.audio < -46) return clamp((m.audio + 70)*3.4, 0, 55);
+      if(m.audio > -6)  return clamp(100 - (m.audio+6)*11, 0, 100);
+      return clamp(100 - Math.abs(m.audio + 21)*3.1, 55, 100);
+    },
+    say:function(m,s){
+      if(m.audio <= -99) return "No microphone signal.";
+      if(m.audio < -46) return "We can barely hear you. Speak up, or move closer to the microphone.";
+      if(m.audio > -6) return "Your audio is close to clipping. Back off from the microphone a little.";
+      if(s >= 72) return "Levels are good. Keep speaking at this volume.";
+      return "Audible, but on the quiet side. Speak up a little, or move closer to the microphone.";
+    }}
+];
+
+var GATE = { light:58, even:50, bg:55, frame:58, steady:50, mic:45 };
+var lastScores = {};
+
+function band(s){ return s >= 72 ? "ok" : (s >= 48 ? "warn" : "bad"); }
+
+function scoreRoom(){
+  var m = S.metrics; if(!m) return;
+  var total = 0, failing = [];
+  var sampling = (S.mode === "recording" || S.mode === "practice");
+  if(sampling && !S.runSums) resetRunStats();
+  CHECKS.forEach(function(c){
+    var raw = c.score(m);
+    lastScores[c.key] = lastScores[c.key] == null ? raw : lerp(lastScores[c.key], raw, 0.28);
+    var s = lastScores[c.key];
+    total += s;
+    if(sampling) S.runSums[c.key] = (S.runSums[c.key]||0) + s;
+    if(s < GATE[c.key]) failing.push({ c:c, s:s });
+  });
+  if(sampling) S.runN++;
+  var overall = Math.round(total / CHECKS.length);
+  S.ready = failing.length === 0;
+
+  renderChecks(m, overall);
+  renderCoach(m, failing);
+
+  if(sampling) S.qualitySamples.push(overall);
+}
+
+function renderChecks(m, overall){
+  var grid = $("#checkGrid");
+  if(!grid.children.length){
+    CHECKS.forEach(function(c){
+      var n = el("div","check"); n.dataset.key = c.key; n.dataset.s = "bad";
+      n.innerHTML = '<div class="check-ic">'+c.icon+'</div>'+
+        '<div class="check-body"><div class="n">'+c.name+'</div>'+
+        '<div class="d"></div><div class="meter"><i style="width:0%"></i></div></div>';
+      grid.appendChild(n);
+    });
+  }
+  CHECKS.forEach(function(c, i){
+    var s = lastScores[c.key] || 0, n = grid.children[i];
+    n.dataset.s = band(s);
+    n.querySelector(".d").textContent = c.say(m, s);
+    n.querySelector(".meter i").style.width = Math.round(s)+"%";
+  });
+
+  var badge = $("#readyScore");
+  badge.className = "score " + band(overall);
+  badge.textContent = S.ready ? "Ready to record · "+overall+"/100" : "Not ready yet · "+overall+"/100";
+  $("#checkTick").textContent = S.demo ? "Simulated room · sampled 4×/sec" : "Live · sampled 4×/sec";
+  gateControls();
+}
+
+var coachTimer = 0;
+function renderCoach(m, failing){
+  var box = $("#coach");
+  if(Date.now() - coachTimer < 1600) return;
+  coachTimer = Date.now();
+  failing.sort(function(a,b){ return a.s - b.s; });
+  var show = failing.slice(0,2);
+  var html = show.map(function(f){
+    return '<div class="coach-item '+(f.s<40?"bad":"warn")+'"><b>'+f.c.name.replace("&amp;","&")+'</b> '+f.c.say(m, f.s)+'</div>';
+  }).join("");
+  if(!show.length && S.mode === "idle" && S.stage !== 3){
+    html = '<div class="coach-item good"><b>Room looks good.</b> Whenever you are ready, press Record segment.</div>';
+  }
+  if(!show.length && S.stage === 3) html = "";
+  if(box.dataset.h !== html){ box.dataset.h = html; box.innerHTML = html; }
+}
+
+/* ============================================================
+   Recording
+   ============================================================ */
+var recorder = null, chunks = [], segStart = 0, segAccum = 0, segRAF = 0, recTail = 1.0;
+
+function pickMime(){
+  var opts = ["video/webm;codecs=vp9,opus","video/webm;codecs=vp8,opus","video/webm","video/mp4"];
+  for(var i=0;i<opts.length;i++){
+    if(window.MediaRecorder && MediaRecorder.isTypeSupported(opts[i])) return opts[i];
+  }
+  return "";
+}
+
+function resetRunStats(){ S.qualitySamples = []; S.runSums = {}; S.runN = 0; }
+
+function startSegment(i, practice){
+  if(!S.stream) return;
+  S.activeSeg = i;
+  S.mode = practice ? "practice" : "recording";
+  S.segDuration = segDurationFor(i);
+  S.segElapsed = 0; segAccum = 0; segStart = performance.now();
+  clearHighlight(i);
+  scrollToSegment(i);
+  resetRunStats();
+
+  if(!practice){
+    chunks = [];
+    try{
+      recorder = new MediaRecorder(S.stream, { mimeType: pickMime(), videoBitsPerSecond: 2500000 });
+      recorder.ondataavailable = function(e){ if(e.data && e.data.size) chunks.push(e.data); };
+      recorder.onstop = finishRecording;
+      recorder.start(250);
+    }catch(e){
+      showModal("Recording unavailable",
+        "This browser blocked MediaRecorder, so takes cannot be captured here. The prompter and the room check still work — try Chrome, Edge or Firefox on a desktop for the full flow.",
+        [{ label:"Got it", primary:true }]);
+      S.mode = "idle"; return;
+    }
+  }
+
+  stageEl.classList.add("rolling");
+  $("#chipRec").classList.toggle("hidden", practice);
+  $("#chipPractice").classList.toggle("hidden", !practice);
+  $("#chipSeg").classList.remove("hidden");
+  $("#chipSeg").textContent = "Segment "+(i+1)+" of "+SCRIPT.length+" · "+SCRIPT[i].name;
+  $("#chipPaused").classList.add("hidden");
+  setTransport(practice ? "Practice — "+SCRIPT[i].name : "Recording — "+SCRIPT[i].name,
+               practice ? "Nothing is being saved. Read it through and find your pace."
+                        : "Read from the prompter. Pause any time; Redo re-records this part only.");
+  renderPrompter(); gateControls();
+  if(segRAF) cancelAnimationFrame(segRAF);
+  segTick();
+}
+
+function segTick(){
+  segRAF = requestAnimationFrame(segTick);
+  if(S.mode !== "recording" && S.mode !== "practice") return;
+  S.segElapsed = segAccum + (performance.now() - segStart)/1000;
+  var frac = clamp(S.segElapsed / S.segDuration, 0, 1);
+  highlightWords(frac);
+  $("#recTimer").textContent = mmss(S.segElapsed);
+  $("#tpSub").textContent = (S.mode === "practice" ? "Practice · " : "") +
+    mmss(S.segElapsed) + " of about " + mmss(S.segDuration);
+  if(S.segElapsed >= S.segDuration + recTail) endSegment(true);
+}
+
+function pauseSegment(){
+  if(S.mode !== "recording" && S.mode !== "practice") return;
+  segAccum += (performance.now() - segStart)/1000;
+  S.mode = "paused";
+  if(recorder && recorder.state === "recording") recorder.pause();
+  $("#chipPaused").classList.remove("hidden");
+  $("#chipRec").classList.add("hidden");
+  setTransport("Paused — "+SCRIPT[S.activeSeg].name, "Resume where you left off, or redo this part from the top.");
+  gateControls();
+}
+
+function resumeSegment(){
+  if(S.mode !== "paused") return;
+  segStart = performance.now();
+  S.mode = recorder && recorder.state === "paused" ? "recording" : (recorder ? "recording" : "practice");
+  if(recorder && recorder.state === "paused") recorder.resume();
+  $("#chipPaused").classList.add("hidden");
+  $("#chipRec").classList.toggle("hidden", S.mode !== "recording");
+  gateControls();
+}
+
+// `auto` = the prompter ran out; otherwise the reader pressed Stop.
+function endSegment(auto){
+  if(S.mode === "idle") return;
+  var wasPractice = (S.mode === "practice") || (S.mode === "paused" && !recorder);
+  if(S.mode !== "paused") segAccum += (performance.now() - segStart)/1000;
+  var dur = segAccum;
+  S.mode = "idle";
+  if(segRAF) cancelAnimationFrame(segRAF);
+  stageEl.classList.remove("rolling");
+  $("#chipRec").classList.add("hidden");
+  $("#chipPaused").classList.add("hidden");
+
+  if(recorder && recorder.state !== "inactive"){
+    recorder._dur = dur;
+    recorder.stop();
+  } else if(wasPractice){
+    finishPracticeSegment(auto);
+  }
+  clearHighlight();
+}
+
+function finishRecording(){
+  var dur = recorder._dur || 0, i = S.activeSeg;
+  var blob = new Blob(chunks, { type: chunks.length ? chunks[0].type : "video/webm" });
+  recorder = null;
+  S.attempts[i]++;
+  S.takes[i] = {
+    blob: blob, url: URL.createObjectURL(blob), dur: dur,
+    takeNo: S.attempts[i], thumb: grabThumb(),
+    quality: S.qualitySamples.length ? Math.round(S.qualitySamples.reduce(function(a,b){return a+b;},0)/S.qualitySamples.length) : null
+  };
+  $("#chipPractice").classList.add("hidden");
+  $("#chipSeg").classList.add("hidden");
+
+  var next = S.takes.findIndex(function(t){ return !t; });
+  if(next === -1){
+    setTransport("All segments captured", "Move to Review to watch them back, redo anything, and submit.");
+    goStage(3);
+  } else {
+    S.activeSeg = next;
+    setTransport("Take saved", "Segment "+(i+1)+" is in the can. Next up: "+SCRIPT[next].name+".");
+    scrollToSegment(next);
+  }
+  renderPrompter(); renderSteps(); gateControls();
+}
+
+function grabThumb(){
+  try{
+    var c = document.createElement("canvas");
+    c.width = 148; c.height = 84;
+    c.getContext("2d").drawImage(video, 0, 0, c.width, c.height);
+    return c.toDataURL("image/jpeg", 0.7);
+  }catch(e){ return null; }
+}
+
+function redoSegment(i){
+  if(S.mode !== "idle"){ endSegment(false); }
+  if(S.takes[i]){ URL.revokeObjectURL(S.takes[i].url); S.takes[i] = null; }
+  S.activeSeg = i;
+  goStage(2);
+  renderPrompter(); gateControls();
+  setTransport("Ready to redo — "+SCRIPT[i].name,
+    "Take "+(S.attempts[i]+1)+". The earlier take has been discarded.");
+  scrollToSegment(i);
+}
+
+function playTake(i){
+  var t = S.takes[i]; if(!t) return;
+  var pb = $("#playback");
+  pb.src = t.url; pb.classList.remove("hidden"); pb.play().catch(function(){});
+  $("#overlay").classList.add("hidden");
+  setTransport("Reviewing segment "+(i+1), SCRIPT[i].name+" · take "+t.takeNo+" · "+mmss(t.dur));
+  showClosePlayback();
+  gateControls();
+}
+
+function showClosePlayback(){
+  var hud = $("#hud");
+  if(hud.querySelector(".close-pb")) return;
+  var b = el("button","btn btn-sm btn-dark close-pb","Close playback");
+  b.style.pointerEvents = "auto";
+  b.addEventListener("click", function(){
+    var pb = $("#playback"); pb.pause(); pb.classList.add("hidden"); pb.removeAttribute("src");
+    $("#overlay").classList.remove("hidden");
+    b.remove(); gateControls();
+  });
+  hud.appendChild(b);
+}
+
+/* ============================================================
+   Practice run — the whole script, prompter and room check
+   running, nothing written to disk.
+   ============================================================ */
+function startPractice(){
+  S.practiceActive = true;
+  resetRunStats();
+  goStage(1);
+  startSegment(0, true);
+}
+
+function finishPracticeSegment(auto){
+  if(!S.practiceActive) return;
+  var next = S.activeSeg + 1;
+  if(next < SCRIPT.length && auto){
+    startSegment(next, true);
+  } else {
+    endPractice();
+  }
+}
+
+function endPractice(){
+  S.practiceActive = false;
+  S.practiceDone = true;
+  $("#chipPractice").classList.add("hidden");
+  $("#chipSeg").classList.add("hidden");
+  S.activeSeg = S.takes.findIndex(function(t){ return !t; });
+  if(S.activeSeg === -1) S.activeSeg = 0;
+
+  var n = S.runN || 1;
+  var rows = CHECKS.map(function(c){
+    var avg = Math.round((S.runSums[c.key]||0)/n);
+    return '<div class="check" data-s="'+band(avg)+'" style="margin-bottom:8px">'+
+      '<div class="check-ic">'+c.icon+'</div><div class="check-body">'+
+      '<div class="n">'+c.name+' <span style="float:right;font-variant-numeric:tabular-nums">'+avg+'</span></div>'+
+      '<div class="meter"><i style="width:'+avg+'%"></i></div></div></div>';
+  }).join("");
+  var overall = Math.round(S.qualitySamples.reduce(function(a,b){return a+b;},0) / Math.max(1,S.qualitySamples.length));
+
+  showModal("Practice run complete",
+    "Across the practice you averaged <b>"+overall+" / 100</b> on the room check. Fix anything in amber or red before you record for real — it is much cheaper to move a lamp now than to re-record later." +
+    '<div style="margin-top:16px">'+rows+'</div>',
+    [{ label:"Practice again", action:startPractice },
+     { label:"Start recording", primary:true, action:function(){ goStage(2); } }]);
+  goStage(2);
+  renderPrompter(); gateControls();
+  setTransport("Practice finished", "When the checks are green, record your first segment.");
+}
+
+/* ============================================================
+   Stage machine
+   ============================================================ */
+function goStage(n){
+  S.stage = n;
+  $("#reviewCard").classList.toggle("hidden", n !== 3);
+  $("#checksCard").classList.toggle("hidden", n === 3);
+  $("#practiceNote").classList.toggle("hidden", n !== 0 && n !== 1);
+  if(n === 3) renderReview();
+  renderSteps(); gateControls();
+}
+
+function renderSteps(){
+  var done = S.takes.filter(Boolean).length;
+  var states = [
+    S.stream ? (S.ready ? "done" : "active") : "active",
+    S.practiceActive ? "active" : (S.practiceDone ? "done" : "idle"),
+    done === SCRIPT.length ? "done" : (done > 0 || S.mode === "recording" ? "active" : "idle"),
+    S.submitted ? "done" : (done === SCRIPT.length ? "active" : "idle")
+  ];
+  states[S.stage] = states[S.stage] === "done" ? "done" : "active";
+  document.querySelectorAll(".step").forEach(function(b, i){
+    b.dataset.state = i === S.stage ? "active" : states[i];
+    b.disabled = !S.stream && i > 0;
+  });
+  var modes = ["Setting up","Practising","Recording","Reviewing"];
+  $("#railMode").textContent = modes[S.stage];
+  $("#railMode").style.background = S.stage===1 ? "rgba(95,124,76,.14)" : (S.stage===2 ? "rgba(228,87,30,.12)" : "var(--hua-cream-2)");
+  $("#railMode").style.color = S.stage===1 ? "#42592f" : (S.stage===2 ? "var(--hua-orange)" : "var(--hua-ink-2)");
+}
+
+function setTransport(t, s){ $("#tpTitle").textContent = t; $("#tpSub").textContent = s; }
+
+function gateControls(){
+  var live = (S.mode === "recording" || S.mode === "practice");
+  var paused = S.mode === "paused";
+  var hasCam = !!S.stream;
+  var playingBack = !$("#playback").classList.contains("hidden");
+
+  $("#btnRecord").disabled = !hasCam || playingBack;
+  $("#btnRecord").innerHTML = live || paused
+    ? '<span class="dot" style="background:#fff"></span> Stop segment'
+    : '<span class="dot" style="background:#fff"></span> Record segment';
+  $("#btnRecord").classList.toggle("btn-rec", true);
+
+  $("#btnPause").disabled = !(live || paused);
+  $("#btnPause").textContent = paused ? "Resume" : "Pause";
+
+  $("#btnRedo").disabled = !hasCam || (!S.takes[S.activeSeg] && !live && !paused);
+  $("#btnPractice").disabled = !hasCam || (!S.practiceActive && (live || paused));
+  $("#btnPractice").textContent = S.practiceActive ? "End practice" : "Practice run";
+
+  if(!S.ready && hasCam && !live && !paused){
+    $("#btnRecord").title = "The room check has not cleared yet — we will warn you before recording";
+  } else { $("#btnRecord").removeAttribute("title"); }
+}
+
+/* ============================================================
+   Review
+   ============================================================ */
+function renderReview(){
+  var total = S.takes.reduce(function(a,t){ return a + (t?t.dur:0); }, 0);
+  var retakes = S.attempts.reduce(function(a,n){ return a + Math.max(0,n-1); }, 0);
+  var qual = S.takes.filter(function(t){ return t && t.quality != null; });
+  var avgQ = qual.length ? Math.round(qual.reduce(function(a,t){ return a+t.quality; },0)/qual.length) : null;
+
+  $("#reviewKpis").innerHTML =
+    '<div class="kpi"><div class="k">Total runtime</div><div class="v accent">'+mmss(total)+'</div></div>'+
+    '<div class="kpi"><div class="k">Segments</div><div class="v">'+S.takes.filter(Boolean).length+' / '+SCRIPT.length+'</div></div>'+
+    '<div class="kpi"><div class="k">Retakes</div><div class="v">'+retakes+'</div></div>'+
+    '<div class="kpi"><div class="k">Avg room score</div><div class="v '+(avgQ>=72?'sage':'')+'">'+(avgQ==null?'—':avgQ)+'</div></div>';
+
+  var list = $("#takeList"); list.innerHTML = "";
+  SCRIPT.forEach(function(seg, i){
+    var t = S.takes[i];
+    var row = el("div","take-row"); row.dataset.s = t ? "filled" : "empty";
+    var thumb = el("img","take-thumb");
+    if(t && t.thumb) thumb.src = t.thumb; else thumb.style.background = "var(--hua-cream-2)";
+    thumb.alt = "";
+    row.appendChild(thumb);
+    row.appendChild(el("div","take-info",
+      '<div class="n">'+(i+1)+'. '+seg.name+'</div><div class="d">'+
+      (t ? 'Take '+t.takeNo+' · '+mmss(t.dur)+(t.quality!=null?' · room '+t.quality+'/100':'')
+         : 'Not recorded yet')+'</div>'));
+    if(t){
+      var w = el("button","btn btn-sm","Watch");
+      w.addEventListener("click", function(){ playTake(i); });
+      row.appendChild(w);
+    }
+    var r = el("button","btn btn-sm "+(t?"":"btn-primary"), t ? "Redo" : "Record");
+    r.addEventListener("click", function(){ redoSegment(i); });
+    row.appendChild(r);
+    list.appendChild(row);
+  });
+
+  $("#btnSubmit").disabled = S.takes.some(function(t){ return !t; });
+}
+
+function downloadTakes(){
+  S.takes.forEach(function(t, i){
+    if(!t) return;
+    setTimeout(function(){
+      var a = document.createElement("a");
+      a.href = t.url;
+      a.download = "hua-testimonial-"+String(i+1).padStart(2,"0")+"-"+
+        SCRIPT[i].name.toLowerCase().replace(/[^a-z0-9]+/g,"-")+".webm";
+      document.body.appendChild(a); a.click(); a.remove();
+    }, i*400);
+  });
+}
+
+async function submitTakes(){
+  if(!UPLOAD_ENDPOINT){
+    showModal("Ready to send",
+      "All "+SCRIPT.length+" segments are captured and held in this browser. No collection endpoint is configured on this build, so nothing has been uploaded — set <code>UPLOAD_ENDPOINT</code> at the top of this page to point at your intake service, or download the takes and send them to advancement@hua.edu.",
+      [{ label:"Download my takes", action:downloadTakes },
+       { label:"Close", primary:true }]);
+    return;
+  }
+  var fd = new FormData();
+  S.takes.forEach(function(t, i){ fd.append("segment_"+(i+1), t.blob, "segment_"+(i+1)+".webm"); });
+  try{
+    var res = await fetch(UPLOAD_ENDPOINT, { method:"POST", body:fd });
+    if(!res.ok) throw new Error(res.status);
+    S.submitted = true; renderSteps();
+    showModal("Thank you", "Your testimonial is with the HUA Advancement team. Someone will be in touch before it is used anywhere.", [{ label:"Done", primary:true }]);
+  }catch(e){
+    showModal("Upload failed", "We could not reach the intake service ("+e.message+"). Your takes are still here — try again, or download them and email advancement@hua.edu.",
+      [{ label:"Download my takes", action:downloadTakes },{ label:"Close", primary:true }]);
+  }
+}
+
+/* ============================================================
+   Modal
+   ============================================================ */
+function showModal(title, body, actions){
+  var m = $("#modal");
+  m.innerHTML = '<img src="'+$(".seal").src+'" alt="" style="width:40px;height:40px">'+
+    '<h3>'+title+'</h3><p>'+body+'</p>';
+  var acts = el("div","acts");
+  (actions||[{label:"Close",primary:true}]).forEach(function(a){
+    var b = el("button","btn"+(a.primary?" btn-primary":""), a.label);
+    b.addEventListener("click", function(){ hideModal(); if(a.action) a.action(); });
+    acts.appendChild(b);
+  });
+  m.appendChild(acts);
+  $("#scrim").classList.remove("hidden");
+}
+function hideModal(){ $("#scrim").classList.add("hidden"); }
+$("#scrim").addEventListener("click", function(e){ if(e.target === e.currentTarget) hideModal(); });
+
+/* ============================================================
+   Wiring
+   ============================================================ */
+$("#btnEnable").addEventListener("click", async function(){
+  try{ await enableCamera(); }
+  catch(err){
+    showModal("We could not open your camera",
+      "The browser refused access (<b>"+(err && err.name || "unknown")+"</b>). Check the camera icon in your address bar, close any other app using the camera, and try again. You can also walk through the page in preview mode.",
+      [{ label:"Preview without camera", action:startDemo },
+       { label:"Try again", primary:true, action:function(){ $("#btnEnable").click(); } }]);
+  }
+});
+$("#btnDemo").addEventListener("click", startDemo);
+
+$("#btnRecord").addEventListener("click", function(){
+  if(S.mode === "recording" || S.mode === "practice" || S.mode === "paused"){ endSegment(false); return; }
+  if(!S.ready){
+    var worst = CHECKS.filter(function(c){ return (lastScores[c.key]||0) < GATE[c.key]; })
+                      .map(function(c){ return "<b>"+c.name+"</b>"; }).join(", ");
+    showModal("The room check has not cleared",
+      "Still amber or red: "+worst+". You can record anyway, but takes shot in poor light or against a busy background usually have to be redone.",
+      [{ label:"Let me fix it first" },
+       { label:"Record anyway", primary:true, action:function(){ goStage(2); startSegment(S.activeSeg, false); } }]);
+    return;
+  }
+  goStage(2); startSegment(S.activeSeg, false);
+});
+$("#btnPause").addEventListener("click", function(){
+  if(S.mode === "paused") resumeSegment(); else pauseSegment();
+});
+$("#btnRedo").addEventListener("click", function(){ redoSegment(S.activeSeg); });
+$("#btnPractice").addEventListener("click", function(){
+  if(S.practiceActive){ S.practiceActive = false; endSegment(false); endPractice(); }
+  else startPractice();
+});
+$("#btnSubmit").addEventListener("click", submitTakes);
+$("#btnDownload").addEventListener("click", downloadTakes);
+$("#btnBackToRecord").addEventListener("click", function(){ goStage(2); });
+
+document.querySelectorAll(".step").forEach(function(b){
+  b.addEventListener("click", function(){
+    var n = +b.dataset.step;
+    if(n === 1 && S.stream){ startPractice(); return; }
+    goStage(n);
+  });
+});
+
+$("#tgClutter").addEventListener("change", function(e){ demoClutter = e.target.checked; });
+$("#tgMirror").addEventListener("change", function(e){
+  S.mirror = e.target.checked;
+  video.classList.toggle("mirror", S.mirror);
+});
+$("#rngPace").addEventListener("input", function(e){
+  S.pace = +e.target.value;
+  $("#lblPace").textContent = S.pace+" wpm";
+  if(S.mode !== "idle") S.segDuration = segDurationFor(S.activeSeg);
+});
+$("#rngSize").addEventListener("input", function(e){
+  prompterEl.querySelectorAll(".seg-text").forEach(function(n){ n.style.fontSize = e.target.value+"px"; });
+});
+$("#selVideo").addEventListener("change", function(e){
+  if(!S.demo) enableCamera(e.target.value, $("#selAudio").value).catch(function(){});
+});
+$("#selAudio").addEventListener("change", function(e){
+  if(!S.demo) enableCamera($("#selVideo").value, e.target.value).catch(function(){});
+});
+
+document.addEventListener("keydown", function(e){
+  if(e.target.matches("input,select,textarea")) return;
+  if(e.code === "Space"){ e.preventDefault(); $( (S.mode==="idle") ? "#btnRecord" : "#btnPause").click(); }
+  if(e.key === "r" || e.key === "R") $("#btnRedo").click();
+});
+
+window.addEventListener("beforeunload", function(e){
+  if(S.takes.some(Boolean) && !S.submitted){ e.preventDefault(); e.returnValue = ""; }
+});
+
+/* ---------- boot ---------- */
+buildPrompter();
+selectSegment(0);
+renderSteps();
+gateControls();
+updateProgress();
+
+function selectSegment(i){
+  if(S.mode !== "idle") return;
+  S.activeSeg = i;
+  renderPrompter(); gateControls(); scrollToSegment(i);
+  if(S.stream) setTransport(S.takes[i] ? "Segment "+(i+1)+" is recorded" : "Ready — "+SCRIPT[i].name,
+    S.takes[i] ? "Watch it back, or redo this part on its own." : SCRIPT[i].note);
+}
+
+})();
+</script>
+</body>
+</html>
