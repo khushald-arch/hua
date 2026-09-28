@@ -187,3 +187,31 @@ function logSearchFields() {
   Logger.log(JSON.stringify(neon_('get', '/accounts/search/searchFields'), null, 1));
   Logger.log(JSON.stringify(neon_('get', '/customFields?category=Account'), null, 1));
 }
+
+/**
+ * Troubleshooting: tests each filter on its own and logs how many accounts match,
+ * so you can see which one is returning 0 (usually a wrong field name/ID).
+ */
+function debugFilters() {
+  const filters = {
+    'Email opened': { field: CONFIG.EMAIL_OPENED_FIELD, operator: CONFIG.EMAIL_OPENED_OPERATOR },
+    'Never donated': { field: CONFIG.DONATION_COUNT_FIELD, operator: 'EQUAL', value: '0' },
+    'Has Windfall ID': { field: CONFIG.WINDFALL_ID_FIELD, operator: 'NOT_BLANK' },
+    'Has Net Worth': { field: CONFIG.NET_WORTH_FIELD, operator: 'NOT_BLANK' },
+  };
+  const all = [];
+  Object.keys(filters).forEach(name => {
+    all.push(filters[name]);
+    [[name + ' (alone)', [filters[name]]], ['...combined up to ' + name, all.slice()]].forEach(([label, fields]) => {
+      try {
+        const res = neon_('post', '/accounts/search', {
+          searchFields: fields, outputFields: ['Account ID'], pagination: { currentPage: 0, pageSize: 1 },
+        });
+        Logger.log(label + ': ' + ((res.pagination && res.pagination.totalResults) || 0) + ' accounts');
+      } catch (err) {
+        Logger.log(label + ': ERROR -> ' + err.message);
+      }
+    });
+  });
+  Logger.log('Already pulled (skipped): ' + getPulledIds_().size);
+}
