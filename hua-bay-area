@@ -1,0 +1,471 @@
+<!--
+=====================================================================
+  FRIENDS OF HUA — BAY AREA  |  Elementor-friendly redesign
+  ---------------------------------------------------------------------
+  HOW TO USE IN ELEMENTOR
+  1. Paste the <style> block ONCE: Site Settings > Custom CSS
+     (or Page Settings > Advanced > Custom CSS, or the first HTML widget).
+  2. Each block marked "SECTION" below is self-contained. Create one
+     full-width Elementor Container per section and drop an
+     "HTML" widget inside, then paste that section's markup.
+  3. All styles are scoped under .fohua so nothing leaks into the
+     theme header/footer. Anchor IDs match the existing page
+     (#leadership, #contribute-sec, #upcoming-events-sec, etc.).
+  4. Colors/fonts are HUA's own (from the hua.edu theme): purple #2D0B44 /
+     #651366, yellow #FEBE10 buttons, #FDBF0F→#E53923 gradient, Poppins + Open Sans.
+=====================================================================
+-->
+<!--
+  PHOTO CREDITS (free Unsplash License — no attribution required, but appreciated):
+  Golden Gate Bridge – Venti Views · Golden Gate tower – Logan Weaver
+  Temple tower – Satish Dharmavarapu · Classical dance – Sooraj Perambra
+  Diyas – Udayaditya Barua · Event photos – hua.edu media library
+  TIP: before going live, download these and upload to the WordPress Media
+  Library, then swap the URLs so the page doesn't depend on Unsplash.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Friends of HUA — Bay Area</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- ===================== STYLE (paste once) ===================== -->
+<style>
+/* ===== HUA brand tokens (taken from hua.edu theme) ===== */
+.fohua{
+  --purple:#2D0B44;        /* headings */
+  --purple-deep:#280A41;   /* header gradient start */
+  --plum:#651366;          /* links / header gradient end */
+  --plum-btn:#5F2169;      /* button text */
+  --magenta:#A71A5B;       /* link hover */
+  --yellow:#FEBE10;        /* primary button */
+  --yellow-hover:#F0C505;
+  --orange:#FF8A01;        /* form borders / accents */
+  --saffron:#F2A244;
+  --red-orange:#E53923;
+  --grad:linear-gradient(86deg,#FDBF0F 0%,#E53923 100%);
+  --header-grad:linear-gradient(90deg,#280A41 0%,#651366 100%);
+  --cream:#F3E4D1; --cream-soft:#FBF4EA; --peach:#F7CB8A;
+  --ink:#404040; --muted:#6E6272; --line:#EADBC6;
+  --radius:12px; --shadow:0 12px 30px rgba(45,11,68,.10);
+  --head:'Poppins',sans-serif; --body:'Open Sans',sans-serif;
+  font-family:var(--body); color:var(--ink); line-height:1.7; font-size:16px;
+}
+.fohua *,.fohua *::before,.fohua *::after{box-sizing:border-box}
+.fohua img{max-width:100%;display:block;height:auto}
+.fohua a{color:var(--plum)}
+.fohua a:hover{color:var(--magenta)}
+.fohua ul{margin:0}
+.fohua .fh-wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.fohua section{padding:80px 0;scroll-margin-top:110px}
+/* Om-pattern sections, like the hua.edu site background */
+.fohua .fh-alt{background:var(--cream-soft) url('https://www.hua.edu/wp-content/themes/hua/img/om.png') repeat;background-blend-mode:multiply}
+
+/* headings with the HUA small-logo marker */
+.fohua .fh-head{text-align:center;margin-bottom:46px}
+.fohua .fh-title{font-family:var(--head);font-weight:700;font-size:clamp(28px,3.4vw,40px);line-height:1.2;color:var(--purple);margin:0 0 12px}
+.fohua .fh-head .fh-title::before{content:"";display:block;width:46px;height:46px;margin:0 auto 12px;
+  background:url('https://www.hua.edu/wp-content/uploads/2025/09/header-start-icon.png') center/contain no-repeat}
+.fohua .fh-title-bar{display:block;width:70px;height:4px;border-radius:4px;background:var(--grad);margin:0 auto 16px}
+.fohua .fh-eyebrow{display:inline-block;font-family:var(--head);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--red-orange);margin-bottom:8px}
+.fohua .fh-lead{color:var(--muted);font-size:17px;max-width:660px;margin:0}
+.fohua .fh-head .fh-lead{margin:0 auto}
+
+/* buttons — HUA style: yellow w/ purple text, 5px radius */
+.fohua .fh-btn{display:inline-flex;align-items:center;gap:8px;padding:15px 34px;border-radius:5px;font-family:var(--head);font-weight:600;font-size:16px;text-decoration:none;transition:all .2s;border:2px solid transparent;cursor:pointer;line-height:1.2}
+.fohua .fh-btn-primary{background:var(--yellow);color:var(--plum-btn)!important}
+.fohua .fh-btn-primary:hover{background:var(--yellow-hover);transform:translateY(-2px);box-shadow:0 8px 18px rgba(254,190,16,.35)}
+.fohua .fh-btn-ghost{border-color:#fff;color:#fff!important}
+.fohua .fh-btn-ghost:hover{background:#fff;color:var(--plum)!important}
+.fohua .fh-btn-outline{border-color:var(--plum);color:var(--plum)!important}
+.fohua .fh-btn-outline:hover{background:var(--plum);color:#fff!important}
+
+/* HERO */
+.fohua .fh-hero{position:relative;padding:120px 0 150px;color:#fff;overflow:hidden;
+  background:linear-gradient(90deg,rgba(40,10,65,.95) 0%,rgba(101,19,102,.82) 60%,rgba(101,19,102,.55) 100%),
+  url('https://images.unsplash.com/photo-1585716517566-568f0646f456?auto=format&fit=crop&w=1920&q=80') center 60%/cover no-repeat}
+.fohua .fh-hero::before{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--grad)}
+.fohua .fh-hero .fh-wrap{position:relative;z-index:1}
+.fohua .fh-hero-logo{width:64px;margin-bottom:18px}
+.fohua .fh-hero .fh-eyebrow{color:var(--yellow)}
+.fohua .fh-hero h1{font-family:var(--head);font-weight:700;font-size:clamp(36px,5.4vw,62px);line-height:1.1;margin:0 0 18px;color:#fff;max-width:780px}
+.fohua .fh-hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fohua .fh-hero p{font-size:19px;max-width:600px;opacity:.92;margin:0 0 32px}
+.fohua .fh-actions{display:flex;flex-wrap:wrap;gap:14px}
+
+/* quick nav */
+.fohua .fh-quicknav{position:relative;z-index:2;margin-top:-34px}
+.fohua .fh-quicknav ul{list-style:none;margin:0 auto;padding:8px;display:flex;flex-wrap:wrap;justify-content:center;gap:4px;background:#fff;border-radius:10px;box-shadow:var(--shadow);max-width:880px;border-top:4px solid var(--yellow)}
+.fohua .fh-quicknav a{display:block;padding:10px 18px;border-radius:6px;text-decoration:none;font-family:var(--head);font-weight:500;font-size:14px;color:var(--purple)}
+.fohua .fh-quicknav a:hover{background:var(--purple);color:#fff}
+
+/* intro */
+.fohua .fh-intro{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.fohua .fh-intro .fh-title-bar{margin:0 0 16px}
+.fohua .fh-intro-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3;outline:6px solid #fff;border:4px solid transparent;background:var(--grad) border-box}
+.fohua .fh-intro-img img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.fohua .fh-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.fohua .fh-pillar{background:var(--cream);border-radius:10px;padding:18px;border-left:4px solid var(--orange)}
+.fohua .fh-pillar b{display:block;font-family:var(--head);font-size:18px;color:var(--purple)}
+.fohua .fh-pillar span{font-size:14px;color:var(--muted)}
+
+/* intro collage */
+.fohua .fh-collage{position:relative;padding:0 0 60px 40px}
+.fohua .fh-collage .fh-intro-img{aspect-ratio:4/5}
+.fohua .fh-collage-small{position:absolute;left:0;bottom:0;width:48%;aspect-ratio:1;border-radius:12px;overflow:hidden;border:6px solid #fff;box-shadow:var(--shadow)}
+.fohua .fh-collage-small img{width:100%;height:100%;object-fit:cover}
+.fohua .fh-collage-badge{position:absolute;right:-10px;top:30px;background:var(--yellow);color:var(--plum-btn);border-radius:10px;padding:14px 18px;box-shadow:var(--shadow);font-family:var(--head)}
+.fohua .fh-collage-badge b{display:block;font-size:20px}
+.fohua .fh-collage-badge span{font-size:12px;font-weight:500}
+@media (max-width:767px){.fohua .fh-collage{padding:0 0 50px 20px}.fohua .fh-collage-badge{right:0}}
+
+/* leadership — gradient ring avatars like HUA team pages */
+.fohua .fh-team{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+.fohua .fh-member{background:#fff;border-radius:var(--radius);padding:30px 22px 26px;text-align:center;box-shadow:0 4px 14px rgba(45,11,68,.06);transition:transform .25s,box-shadow .25s;border-bottom:4px solid transparent}
+.fohua .fh-member:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-bottom-color:var(--yellow)}
+.fohua .fh-avatar{width:96px;height:96px;margin:0 auto 34px;border-radius:50%;padding:4px;background:var(--grad);position:relative}
+.fohua .fh-avatar span{width:100%;height:100%;border-radius:50%;background:#fff;display:grid;place-items:center;font-family:var(--head);font-size:28px;font-weight:700;color:var(--plum)}
+.fohua .fh-avatar::after{content:"";position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);width:46px;height:23px;background:url('https://www.hua.edu/wp-content/uploads/2025/08/team_gradient_smlogo.png') center/contain no-repeat}
+.fohua .fh-member h4{margin:0;font-family:var(--head);font-size:17px;font-weight:600;color:var(--purple)}
+.fohua .fh-role{display:inline-block;margin:8px 0 12px;font-family:var(--head);font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--red-orange)}
+.fohua .fh-member.is-lead .fh-role{padding:3px 12px;border-radius:4px;background:var(--purple);color:var(--yellow)}
+.fohua .fh-mail{display:inline-block;font-size:14px;color:#E95224!important;text-decoration:none;word-break:break-all}
+.fohua .fh-mail:hover{text-decoration:underline}
+
+/* contribute */
+.fohua .fh-give{border-radius:16px;padding:56px;color:#fff;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(40,10,65,.96) 0%,rgba(101,19,102,.88) 55%,rgba(101,19,102,.55) 100%),url('https://images.unsplash.com/photo-1577083753695-e010191bacb5?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat}
+.fohua .fh-give::after{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--grad)}
+.fohua .fh-give .fh-title{color:#fff}
+.fohua .fh-give .fh-title-bar{margin:0 0 16px}
+.fohua .fh-give .fh-eyebrow{color:var(--yellow)}
+.fohua .fh-give p{opacity:.9;margin:0 0 26px}
+.fohua .fh-give-list{list-style:none;padding:0;display:grid;gap:12px}
+.fohua .fh-give-list li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:14px 18px;display:flex;gap:12px;font-size:15px}
+.fohua .fh-give-list li::before{content:"✦";color:var(--yellow)}
+
+/* featured event */
+.fohua .fh-feature{display:grid;grid-template-columns:1fr 1fr;background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.fohua .fh-feature-img{position:relative;min-height:340px}
+.fohua .fh-feature-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fohua .fh-date-badge{position:absolute;left:20px;top:20px;background:var(--yellow);border-radius:8px;padding:10px 16px;text-align:center;color:var(--plum-btn)}
+.fohua .fh-date-badge b{display:block;font-family:var(--head);font-size:30px;line-height:1}
+.fohua .fh-date-badge span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.fohua .fh-feature-body{padding:44px}
+.fohua .fh-feature-body h3{font-family:var(--head);font-size:28px;line-height:1.25;color:var(--purple);margin:0 0 8px}
+.fohua .fh-meta{display:flex;flex-wrap:wrap;gap:16px;font-size:14px;color:var(--muted);margin:0 0 16px}
+.fohua .fh-feature-body p{margin:0 0 26px}
+
+/* past events */
+.fohua .fh-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.fohua .fh-card{background:#fff;border-radius:var(--radius);overflow:hidden;text-decoration:none;display:flex;flex-direction:column;box-shadow:0 4px 14px rgba(45,11,68,.06);transition:transform .25s,box-shadow .25s}
+.fohua .fh-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.fohua .fh-card-img{aspect-ratio:16/10;overflow:hidden;position:relative}
+.fohua .fh-card-img::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--grad)}
+.fohua .fh-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.fohua .fh-card:hover .fh-card-img img{transform:scale(1.06)}
+.fohua .fh-card-body{padding:22px;flex:1;display:flex;flex-direction:column}
+.fohua .fh-card-date{font-size:13px;font-weight:600;color:var(--red-orange)}
+.fohua .fh-card h4{font-family:var(--head);font-size:19px;font-weight:600;line-height:1.35;margin:6px 0 14px;color:var(--purple)}
+.fohua .fh-more{margin-top:auto;font-family:var(--head);font-weight:600;font-size:14px;color:var(--plum)}
+
+/* join — purple panel like HUA's become-a-friend form area */
+.fohua .fh-join-sec{background:var(--header-grad);color:#fff}
+.fohua .fh-join{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+.fohua .fh-join .fh-title{color:#fff}
+.fohua .fh-join .fh-title-bar{margin:0 0 16px}
+.fohua .fh-join .fh-eyebrow{color:var(--yellow)}
+.fohua .fh-join .fh-lead{color:rgba(255,255,255,.85)}
+.fohua .fh-steps{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:18px}
+.fohua .fh-steps li{display:flex;gap:16px}
+.fohua .fh-steps .n{flex:0 0 40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:var(--head);font-weight:700;background:var(--yellow);color:var(--plum-btn)}
+.fohua .fh-steps b{display:block;font-family:var(--head);font-weight:600}
+.fohua .fh-steps span{color:rgba(255,255,255,.8);font-size:15px}
+.fohua .fh-form-card{background:#fff;border-radius:14px;padding:10px;box-shadow:0 20px 40px rgba(0,0,0,.25);border-top:6px solid var(--yellow)}
+.fohua .fh-form-card iframe{width:100%;height:760px;border:0;border-radius:8px}
+
+/* gallery */
+.fohua .fh-gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+.fohua .fh-gallery a{border-radius:10px;overflow:hidden;position:relative}
+.fohua .fh-gallery a::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(45,11,68,.55),transparent 55%);opacity:0;transition:opacity .3s}
+.fohua .fh-gallery a:hover::after{opacity:1}
+.fohua .fh-gallery a:nth-child(1){grid-column:span 2;grid-row:span 2}
+.fohua .fh-gallery a:nth-child(4){grid-column:span 2}
+.fohua .fh-gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.fohua .fh-gallery a:hover img{transform:scale(1.07)}
+
+/* videos */
+.fohua .fh-videos{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.fohua .fh-video{text-decoration:none;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 14px rgba(45,11,68,.06);transition:transform .25s}
+.fohua .fh-video:hover{transform:translateY(-4px)}
+.fohua .fh-thumb{position:relative;aspect-ratio:16/9;background:#000}
+.fohua .fh-thumb img{width:100%;height:100%;object-fit:cover;opacity:.88}
+.fohua .fh-play{position:absolute;inset:0;margin:auto;width:54px;height:54px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.fohua .fh-play::after{content:"";border-left:16px solid var(--plum-btn);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.fohua .fh-video h5{font-family:var(--head);font-size:14px;font-weight:600;line-height:1.45;margin:0;padding:14px 16px 16px;color:var(--purple)}
+.fohua .fh-center{text-align:center;margin-top:40px}
+
+/* closing cta */
+.fohua .fh-cta{text-align:center;color:#fff;border-radius:16px;padding:80px 24px;position:relative;overflow:hidden;background:linear-gradient(0deg,rgba(40,10,65,.92),rgba(101,19,102,.78)),url('https://images.unsplash.com/photo-1761026532882-fdd040d7df1b?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat}
+.fohua .fh-cta .fh-title{color:#fff}
+.fohua .fh-cta .fh-eyebrow{color:var(--yellow)}
+.fohua .fh-cta .fh-lead{color:rgba(255,255,255,.88)}
+.fohua .fh-cta .fh-btn-outline{border-color:#fff;color:#fff!important}
+.fohua .fh-cta .fh-btn-outline:hover{background:#fff;color:var(--plum)!important}
+.fohua .fh-cta::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--grad)}
+.fohua .fh-cta .fh-actions{justify-content:center;margin-top:26px}
+
+@media (max-width:1024px){
+  .fohua .fh-intro,.fohua .fh-give,.fohua .fh-join,.fohua .fh-feature{grid-template-columns:1fr}
+  .fohua .fh-cards,.fohua .fh-videos,.fohua .fh-gallery{grid-template-columns:repeat(2,1fr)}
+  .fohua .fh-give{padding:40px}
+}
+@media (max-width:767px){
+  .fohua section{padding:56px 0}
+  .fohua .fh-hero{padding:80px 0 110px}
+  .fohua .fh-hero p{font-size:17px}
+  .fohua .fh-quicknav a{padding:8px 12px;font-size:13px}
+  .fohua .fh-pillars,.fohua .fh-cards,.fohua .fh-videos{grid-template-columns:1fr}
+  .fohua .fh-gallery{grid-auto-rows:150px}
+  .fohua .fh-gallery a:nth-child(1){grid-row:span 1}
+  .fohua .fh-feature-body{padding:28px}
+  .fohua .fh-give{padding:32px 22px}
+  .fohua .fh-form-card iframe{height:880px}
+}
+</style>
+</head>
+<body style="margin:0;background:#fff">
+<div class="fohua">
+
+<!-- ===================== SECTION 1 · HERO ===================== -->
+<section class="fh-hero">
+  <div class="fh-wrap">
+    <img class="fh-hero-logo" src="https://www.hua.edu/wp-content/uploads/2019/05/Asset-1.svg" alt="Hindu University of America">
+    <span class="fh-eyebrow">Friends of HUA · Bay Area Chapter</span>
+    <h1>Where community meets <span>Dharma</span></h1>
+    <p>A warm circle of Bay Area families, scholars and well-wishers coming together to learn, celebrate and support Hindu University of America.</p>
+    <div class="fh-actions">
+      <a class="fh-btn fh-btn-primary" href="#join-sec">Become a Friend →</a>
+      <a class="fh-btn fh-btn-ghost" href="#upcoming-events-sec">See Events</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 2 · QUICK NAV ===================== -->
+<nav class="fh-quicknav" aria-label="On this page">
+  <div class="fh-wrap">
+    <ul>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#contribute-sec">Contribute</a></li>
+      <li><a href="#upcoming-events-sec">Events</a></li>
+      <li><a href="#past-events">Past Events</a></li>
+      <li><a href="#join-sec">Join Us</a></li>
+      <li><a href="#gallery-sec">Gallery</a></li>
+      <li><a href="#videos-sec">Videos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===================== SECTION 3 · INTRO ===================== -->
+<section>
+  <div class="fh-wrap fh-intro">
+    <div>
+      <span class="fh-eyebrow">Welcome</span>
+      <h2 class="fh-title">A home for Hindu learning in the Bay Area</h2>
+      <span class="fh-title-bar"></span>
+      <p class="fh-lead">Friends of HUA brings people together around one shared hope — that the knowledge traditions of the Hindu and Sanātani worldview are studied, taught and represented with depth and authenticity. Join us for conversations, celebrations and seva.</p>
+      <div class="fh-pillars">
+        <div class="fh-pillar"><b>Learn</b><span>Talks, Saṃvāda dialogues &amp; webinars</span></div>
+        <div class="fh-pillar"><b>Gather</b><span>Galas, Ayurveda Day &amp; HUA Day</span></div>
+        <div class="fh-pillar"><b>Support</b><span>Help HUA grow its scholars</span></div>
+      </div>
+    </div>
+    <div class="fh-collage">
+      <div class="fh-intro-img"><img src="https://images.unsplash.com/photo-1766512774775-4cec70afe3dd?auto=format&fit=crop&w=1000&q=80" alt="Ornate Hindu temple tower rising through lush greenery" loading="lazy"></div>
+      <div class="fh-collage-small"><img src="https://images.unsplash.com/photo-1645264090488-a019de493023?auto=format&fit=crop&w=600&q=80" alt="Two women performing Indian classical dance" loading="lazy"></div>
+      <div class="fh-collage-badge"><b>Bay Area</b><span>Friends of HUA Chapter</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 4 · LEADERSHIP ===================== -->
+<section id="leadership" class="fh-alt">
+  <div class="fh-wrap">
+    <div class="fh-head">
+      <span class="fh-eyebrow">Our Team</span>
+      <h2 class="fh-title">Chapter Leadership</h2>
+      <span class="fh-title-bar"></span>
+      <p class="fh-lead">Volunteers who give their time to bring HUA closer to the Bay Area community. Reach out to any of us — we'd love to hear from you.</p>
+    </div>
+    <div class="fh-team">
+      <div class="fh-member is-lead"><div class="fh-avatar"><span>TG</span></div><h4>Shri. Thirupathaiah Gande</h4><span class="fh-role">Chairperson</span><br><a class="fh-mail" href="mailto:thirupathaiah.gande@hua.edu">✉ thirupathaiah.gande@hua.edu</a></div>
+      <div class="fh-member is-lead"><div class="fh-avatar"><span>JS</span></div><h4>Smt. Jyoti Suravarjula</h4><span class="fh-role">Secretary</span><br><a class="fh-mail" href="mailto:jyoti.suravrjula@hua.edu">✉ jyoti.suravrjula@hua.edu</a></div>
+      <div class="fh-member is-lead"><div class="fh-avatar"><span>A</span></div><h4>Smt. Anandi</h4><span class="fh-role">Treasurer</span><br><a class="fh-mail" href="mailto:Anandi@hua.edu">✉ Anandi@hua.edu</a></div>
+      <div class="fh-member"><div class="fh-avatar"><span>JI</span></div><h4>Shri. Jayaraman Iyer</h4><span class="fh-role">Core Team</span><br><a class="fh-mail" href="mailto:jayaraman.iyer@hua.edu">✉ jayaraman.iyer@hua.edu</a></div>
+      <div class="fh-member"><div class="fh-avatar"><span>MG</span></div><h4>Shri. Madhu Grandhi</h4><span class="fh-role">Core Team</span><br><a class="fh-mail" href="mailto:madhu.grandhi@hua.edu">✉ madhu.grandhi@hua.edu</a></div>
+      <div class="fh-member"><div class="fh-avatar"><span>JY</span></div><h4>Smt. Jyoti Yelagalawadi</h4><span class="fh-role">Core Team</span><br><a class="fh-mail" href="mailto:jyoti.yelagalawadi@hua.edu">✉ jyoti.yelagalawadi@hua.edu</a></div>
+      <div class="fh-member"><div class="fh-avatar"><span>RS</span></div><h4>Smt. Ruchi Sharma</h4><span class="fh-role">Core Team</span><br><a class="fh-mail" href="mailto:ruchi.sharma@hua.edu">✉ ruchi.sharma@hua.edu</a></div>
+      <div class="fh-member"><div class="fh-avatar"><span>SC</span></div><h4>Smt. Swapna Challa</h4><span class="fh-role">Core Team</span><br><a class="fh-mail" href="mailto:swapna.challa@hua.edu">✉ swapna.challa@hua.edu</a></div>
+      <div class="fh-member"><div class="fh-avatar"><span>PB</span></div><h4>Shri. Pavan Bhagavatula</h4><span class="fh-role">Core Team</span><br><a class="fh-mail" href="mailto:pavan.bhagavatula@hua.edu">✉ pavan.bhagavatula@hua.edu</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 5 · CONTRIBUTE ===================== -->
+<section id="contribute-sec">
+  <div class="fh-wrap">
+    <div class="fh-give">
+      <div>
+        <span class="fh-eyebrow">Contribute</span>
+        <h2 class="fh-title">Your support plants seeds of knowledge</h2>
+      <span class="fh-title-bar"></span>
+        <p>Every gift from our Bay Area community helps HUA nurture critical thinking, academic excellence and authentic voices rooted in the Hindu worldview — scholars who represent dharma in academia, media and community life.</p>
+        <a class="fh-btn fh-btn-primary" href="https://www.hua.edu/give/">Give to HUA →</a>
+      </div>
+      <ul class="fh-give-list">
+        <li>Equip scholars to represent dharma in academia</li>
+        <li>Strengthen authentic voices in media and public life</li>
+        <li>Build lasting programs for future generations</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 6 · FEATURED EVENT ===================== -->
+<section id="upcoming-events-sec" class="fh-alt">
+  <div class="fh-wrap">
+    <div class="fh-head">
+      <span class="fh-eyebrow">Events</span>
+      <h2 class="fh-title">HUA Saṃvāda — Bay Area</h2>
+      <span class="fh-title-bar"></span>
+      <p class="fh-lead">An evening of reflective conversation and meaningful dialogue.</p>
+    </div>
+    <article class="fh-feature">
+      <div class="fh-feature-img">
+        <img src="https://www.hua.edu/wp-content/uploads/2026/04/HUA-Samvada-Bay-Area-6.jpg" alt="HUA Saṃvāda Bay Area gathering" loading="lazy">
+        <div class="fh-date-badge"><b>03</b><span>May 2026</span></div>
+      </div>
+      <div class="fh-feature-body">
+        <span class="fh-eyebrow">Saṃvāda</span>
+        <h3>An evening of reflective conversation</h3>
+        <div class="fh-meta"><span>📅 May 3, 2026</span><span>📍 Bay Area</span></div>
+        <p>We warmly invite you to HUA Saṃvāda — not only an opportunity to engage in meaningful dialogue, but also a chance to support Hindu University of America with your presence and your <a href="https://www.hua.edu/give/">contribution</a>.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <a class="fh-btn fh-btn-primary" href="https://www.hua.edu/bay-area/hua-samvada-2">Register Interest →</a>
+          <a class="fh-btn fh-btn-outline" href="https://www.hua.edu/give/">Donate</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== SECTION 7 · PAST EVENTS ===================== -->
+<section id="past-events">
+  <div class="fh-wrap">
+    <div class="fh-head">
+      <span class="fh-eyebrow">Memories</span>
+      <h2 class="fh-title">Past Events</h2>
+      <span class="fh-title-bar"></span>
+      <p class="fh-lead">A look back at the moments our Bay Area community has shared.</p>
+    </div>
+    <div class="fh-cards">
+      <a class="fh-card" href="https://www.hua.edu/blog/hua-day-event-report/">
+        <div class="fh-card-img"><img src="https://www.hua.edu/wp-content/uploads/2025/06/banner1.png" alt="Cultivating Dharma at HUA Day" loading="lazy"></div>
+        <div class="fh-card-body"><span class="fh-card-date">May 10, 2025</span><h4>Cultivating Dharma at HUA Day</h4><span class="fh-more">Read the story →</span></div>
+      </a>
+      <a class="fh-card" href="https://www.hua.edu/blog/ayurveda-day-2024-bay-area/">
+        <div class="fh-card-img"><img src="https://www.hua.edu/wp-content/uploads/2024/11/02.jpg" alt="Ayurveda Day 2024 Bay Area" loading="lazy"></div>
+        <div class="fh-card-body"><span class="fh-card-date">Nov 6, 2024</span><h4>Ayurveda Day 2024 – Bay Area</h4><span class="fh-more">Read the story →</span></div>
+      </a>
+      <a class="fh-card" href="https://www.hua.edu/blog/friends-of-hua-gala-in-bay-area-on-april-22nd-2023/">
+        <div class="fh-card-img"><img src="https://www.hua.edu/wp-content/uploads/2024/12/20230422_182838.webp" alt="Friends of HUA Gala 2023 Bay Area" loading="lazy"></div>
+        <div class="fh-card-body"><span class="fh-card-date">April 22, 2023</span><h4>Friends of HUA Gala 2023 – Bay Area</h4><span class="fh-more">Read the story →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 8 · JOIN ===================== -->
+<section id="join-sec" class="fh-join-sec">
+  <div class="fh-wrap fh-join">
+    <div>
+      <span class="fh-eyebrow">Join Us</span>
+      <h2 class="fh-title">Join our vibrant Bay Area chapter</h2>
+      <span class="fh-title-bar"></span>
+      <p class="fh-lead">Becoming a Friend of HUA is simple, and there's a place for everyone — whether you'd like to attend, volunteer or simply stay in touch.</p>
+      <ul class="fh-steps">
+        <li><span class="n">1</span><div><b>Fill in the short form</b><span>Tell us a little about yourself and your interests.</span></div></li>
+        <li><span class="n">2</span><div><b>We'll reach out</b><span>A chapter member will welcome you personally.</span></div></li>
+        <li><span class="n">3</span><div><b>Be part of the community</b><span>Get invites to Saṃvāda evenings, celebrations and seva.</span></div></li>
+      </ul>
+    </div>
+    <div class="fh-form-card">
+      <!-- In Elementor you can keep this iframe, or swap it for your existing Zoho Forms embed code -->
+      <iframe src="https://forms.hua.edu/hinduuni/form/BecomeaFriendofHUA/formperma/2abEOPHy1GT3OVjyqt04kXVi7CZVhNH15YhsazmrQ3U" title="Become a Friend of HUA form" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 9 · PHOTO GALLERY ===================== -->
+<section id="gallery-sec">
+  <div class="fh-wrap">
+    <div class="fh-head">
+      <span class="fh-eyebrow">Gallery</span>
+      <h2 class="fh-title">Moments from our gatherings</h2>
+      <span class="fh-title-bar"></span>
+    </div>
+    <div class="fh-gallery">
+      <a href="https://www.hua.edu/wp-content/uploads/2025/10/20250510_202435-1536xbnew.jpg" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="fohua-bay"><img src="https://www.hua.edu/wp-content/uploads/2025/10/20250510_202435-1536xbnew.jpg" alt="Audience watching a cultural performance at an HUA gala" loading="lazy"></a>
+      <a href="https://www.hua.edu/wp-content/uploads/2025/10/20250510_201242-1-scaled.jpg" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="fohua-bay"><img src="https://www.hua.edu/wp-content/uploads/2025/10/20250510_201242-1-scaled.jpg" alt="Friends of HUA event" loading="lazy"></a>
+      <a href="https://www.hua.edu/wp-content/uploads/2025/10/20241026_112137-1-scaled.jpg" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="fohua-bay"><img src="https://www.hua.edu/wp-content/uploads/2025/10/20241026_112137-1-scaled.jpg" alt="Certificate presentation on stage at an HUA gala" loading="lazy"></a>
+      <a href="https://www.hua.edu/wp-content/uploads/2025/10/20241026_094926-1-scaled.jpg" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="fohua-bay"><img src="https://www.hua.edu/wp-content/uploads/2025/10/20241026_094926-1-scaled.jpg" alt="Banquet hall filled with guests at an HUA gala" loading="lazy"></a>
+      <a href="https://www.hua.edu/wp-content/uploads/2025/10/20250510_202435-1-scaled.jpg" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="fohua-bay"><img src="https://www.hua.edu/wp-content/uploads/2025/10/20250510_202435-1-scaled.jpg" alt="Friends of HUA gathering" loading="lazy"></a>
+      <a href="https://www.hua.edu/wp-content/uploads/2025/10/new.gif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="fohua-bay"><img src="https://www.hua.edu/wp-content/uploads/2025/10/new.gif" alt="Audience at round tables at an HUA conference" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 10 · VIDEOS ===================== -->
+<section id="videos-sec" class="fh-alt">
+  <div class="fh-wrap">
+    <div class="fh-head">
+      <span class="fh-eyebrow">Watch &amp; Learn</span>
+      <h2 class="fh-title">Video Gallery</h2>
+      <span class="fh-title-bar"></span>
+      <p class="fh-lead">Talks and course previews from HUA scholars and faculty.</p>
+    </div>
+    <div class="fh-videos">
+      <a class="fh-video" href="https://www.youtube.com/watch?v=eSNFG3m30PY" target="_blank" rel="noopener"><div class="fh-thumb"><img src="https://img.youtube.com/vi/eSNFG3m30PY/hqdefault.jpg" alt="" loading="lazy"><span class="fh-play"></span></div><h5>Interfaith Marriages: Challenges and Reconciliation — Dr. Dilip Amin</h5></a>
+      <a class="fh-video" href="https://www.youtube.com/watch?v=M98k_0kvyvw" target="_blank" rel="noopener"><div class="fh-thumb"><img src="https://img.youtube.com/vi/M98k_0kvyvw/hqdefault.jpg" alt="" loading="lazy"><span class="fh-play"></span></div><h5>Why Ayurvedic Women's Health is Important — Vaidya Vandana Baranwal</h5></a>
+      <a class="fh-video" href="https://www.youtube.com/watch?v=Oy-33QxS2-M" target="_blank" rel="noopener"><div class="fh-thumb"><img src="https://img.youtube.com/vi/Oy-33QxS2-M/hqdefault.jpg" alt="" loading="lazy"><span class="fh-play"></span></div><h5>Finding Your True Self with the Bhagavad Gita — Kalika Uttarkar</h5></a>
+      <a class="fh-video" href="https://www.youtube.com/watch?v=xREF8wf6_bg" target="_blank" rel="noopener"><div class="fh-thumb"><img src="https://img.youtube.com/vi/xREF8wf6_bg/hqdefault.jpg" alt="" loading="lazy"><span class="fh-play"></span></div><h5>Discovering Your Prakruthi in Ayurveda — Dr. Rupali Panse</h5></a>
+      <a class="fh-video" href="https://www.youtube.com/watch?v=BZigUqjmxGU" target="_blank" rel="noopener"><div class="fh-thumb"><img src="https://img.youtube.com/vi/BZigUqjmxGU/hqdefault.jpg" alt="" loading="lazy"><span class="fh-play"></span></div><h5>Growing up with The Gita — Course Intro by Ms Kalika Uttarkar</h5></a>
+      <a class="fh-video" href="https://www.youtube.com/watch?v=uS5XF9wuyF4" target="_blank" rel="noopener"><div class="fh-thumb"><img src="https://img.youtube.com/vi/uS5XF9wuyF4/hqdefault.jpg" alt="" loading="lazy"><span class="fh-play"></span></div><h5>Adaptive Approach to Communicating About Hinduphobia</h5></a>
+      <a class="fh-video" href="https://www.youtube.com/watch?v=jbr6Nlt9CW8" target="_blank" rel="noopener"><div class="fh-thumb"><img src="https://img.youtube.com/vi/jbr6Nlt9CW8/hqdefault.jpg" alt="" loading="lazy"><span class="fh-play"></span></div><h5>Indian History as Told by Academia</h5></a>
+      <a class="fh-video" href="https://www.youtube.com/watch?v=0iVHGCbxPlA" target="_blank" rel="noopener"><div class="fh-thumb"><img src="https://img.youtube.com/vi/0iVHGCbxPlA/hqdefault.jpg" alt="" loading="lazy"><span class="fh-play"></span></div><h5>What is Yoga – Discipline, Union, Practice</h5></a>
+    </div>
+    <div class="fh-center"><a class="fh-btn fh-btn-outline" href="https://www.youtube.com/c/HinduUniversityofAmerica" target="_blank" rel="noopener">More on YouTube →</a></div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 11 · CLOSING CTA ===================== -->
+<section>
+  <div class="fh-wrap">
+    <div class="fh-cta">
+      <span class="fh-eyebrow">Namaste</span>
+      <h2 class="fh-title">There's a seat for you at our table</h2>
+      <span class="fh-title-bar"></span>
+      <p class="fh-lead" style="margin:0 auto">Come to an event, bring a friend, or lend a hand. However you'd like to be involved, we'd be glad to welcome you.</p>
+      <div class="fh-actions">
+        <a class="fh-btn fh-btn-primary" href="#join-sec">Become a Friend</a>
+        <a class="fh-btn fh-btn-outline" href="https://www.hua.edu/give/">Give to HUA</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
